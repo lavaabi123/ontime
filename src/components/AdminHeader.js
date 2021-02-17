@@ -4,6 +4,7 @@ import {
   HashRouter as Router, NavLink
 } from "react-router-dom";
 import { Navbar,Nav} from 'react-bootstrap';
+import { MDBDropdown, MDBDropdownToggle, MDBBtn, MDBBtnGroup, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 
 class AdminHeader extends React.Component {
 render() {
@@ -17,17 +18,32 @@ render() {
                 <Navbar.Collapse id="basic-navbar-nav" className="ml-0">
                     <Nav className="float-left">
                         <Nav.Link as={NavLink} to="/index">Dashboard</Nav.Link>
-                        <Nav.Link as={NavLink} to="/account_created">Timesheets</Nav.Link>
+                        <Nav.Link as={NavLink} to="/timesheets">Timesheets</Nav.Link>
                         <Nav.Link as={NavLink} to="/organization">Organization</Nav.Link>
                         <Nav.Link as={NavLink} to="/activities">Activities</Nav.Link>
                         <Nav.Link as={NavLink} to="/policies">Policies</Nav.Link>
                         <Nav.Link as={NavLink} to="/employees">Employees</Nav.Link>
-                        <Nav.Link as={NavLink} to="/reporting">Reporting</Nav.Link>                        
+                        <Nav.Link as={NavLink} to="/reporting">Reporting</Nav.Link>  
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <img alt="Banner" class="user-image" width="15%" src={require("./assets/img/user-default.png").default} />
-            <span class="downicon"><i className="fa fa-angle-down"></i></span>  
+            <MDBBtnGroup className="header-dropdown">
+              <MDBBtn>
+                <Nav.Link as={NavLink} to="/MyProfile" className="p-0">
+                  <img alt="Banner" class="header-profile-img" 
+                  src={require("./assets/img/user-default.png").default} />
+                </Nav.Link>
+              </MDBBtn>
+              <MDBDropdown>
+                <MDBDropdownToggle caret  className="drop-menu-header" />
+                <MDBDropdownMenu color="danger" className="header-drop-left">
+                  <MDBDropdownItem>
+                    <i className="fa fa-user-circle pr-2"></i>
+                    Profile</MDBDropdownItem>
+                  <MDBDropdownItem><i className="fa fa-sign-out pr-2"></i> Logout</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBBtnGroup>
         </Router>
     </div>
   );
