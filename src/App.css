@@ -295,8 +295,23 @@ select.form-control {
 .font-11{
   font-size: 11.0pt;
 }
+.text-black{
+  color:#000;
+}
 .border-blue {
   border-color: #024769 !important;
+}
+.background-blue {
+  background-color: #89c2de !important;
+}
+.background-green {
+  background-color: #33ea31 !important;
+}
+.background-orange {
+  background-color: #efbe52 !important;
+}
+.background-red {
+  background-color: #ec4848 !important;
 }
 .width-70{
   width: 72%;
@@ -381,8 +396,14 @@ select.form-control {
   background-color: #a9f3734d;
   color: #7DC24B;
 }
+.payrollform{
+  box-shadow: 0px 2px 7px 1px #9e9e9ebd;
+  padding: 2rem;
+  margin-top: 2rem;
+  clear:both;
+}
 .permission-checkbox{
-  float: left;width: 10%;margin-top: 2%;
+  float: left;width: 2rem;margin-top: 2%;
 }
 .permission-label{
   padding-left:2%;
@@ -393,9 +414,13 @@ select.form-control {
 .mdb-datatable-filter{
   margin:0 0 0 auto;
 }
+
 table th{
   font-size:10pt !important;
   font-weight: 500 !important;
+}
+table tr{
+  height: 20px;
 }
 table td {
   font-size: 10pt !important;
