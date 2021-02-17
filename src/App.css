@@ -433,6 +433,65 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
 .dataTables_paginate{
   float : right;
 }
+.profile-img{
+  top: 2%;
+  right: 25%;
+  border-radius: 50%;
+}
+.mt-6{
+  margin-top: 4rem!important;
+}
+.header-dropdown{
+  position: absolute !important;
+  right: 115px;
+    top: -3px;
+    z-index: 89;
+}
+.header-dropdown .btn-default{
+  padding-right: 0px !important;
+}
+.header-dropdown .btn-default:focus{
+  box-shadow: none !important;
+}
+.header-profile-img{
+  width: 65px !important;
+  border-radius: 50%;
+}
+.drop-menu-header{
+  margin-top: 21px;
+}
+.sticky-top{
+  z-index: 0 !important;
+}
+.dropdown .btn-secondary {
+  color: #fff;
+  background-color:transparent !important;
+  border-color:transparent !important;
+}
+.header-drop-left{
+  left: -115px !important;
+  margin: 1rem 0 0;
+  background-color: #21BEDE;
+}
+.header-drop-left i,.header-drop-left button {
+  color: #ffffff;
+}
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color:transparent;
+}
+.header-drop-left .dropdown-item {
+  padding: 0.8rem 1.5rem;}
+  .btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow: none !important;
+}
+.dropdown .btn-secondary.focus, .dropdown .btn-secondary:focus {
+  box-shadow:none !important;
+}
+.bg-amber{
+  background-color: #fff8e1 ;
+}
 
 @media (max-width: 767px){
 .bs-stepper-content {
@@ -505,6 +564,24 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
     right: 25%;
     width: 8% !important;
   }
+  .header-profile-img {
+    width: 30px !important;
+    border-radius: 50%;
+}
+.header-dropdown {
+  position: absolute !important;
+  right: 57px;
+  top: 0px;
+  z-index: 89;
+}
+.header-drop-left {
+  left: -65px !important;
+  margin: 0.2rem 0 0;
+  background-color: #21BEDE;
+}
+.drop-menu-header {
+  margin-top: 8px;
+}
 }
 
 @media (max-width: 400px){

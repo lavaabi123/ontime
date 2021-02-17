@@ -8,6 +8,8 @@ import Organization from './Organization';
 import Activities from './Activities';
 import Policies from './Policies';
 import Employees from './Employees';
+import MyProfile from './MyProfile';
+import Timesheets from './Timesheets';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -41,6 +43,14 @@ ReactDOM.render(
         <Route
           path="/employees"
           render={(props) => <Employees {...props} />}
+        />
+        <Route
+          path="/MyProfile"
+          render={(props) => <MyProfile {...props} />}
+        />
+        <Route
+          path="/timesheets"
+          render={(props) => <Timesheets {...props} />}
         />
         <Redirect to="/index" />
         <Redirect from="/" to="/index" />
