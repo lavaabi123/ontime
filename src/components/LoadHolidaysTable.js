@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 /* import "mdbreact/dist/css/mdb.css";
 import "@fortawesome/fontawesome-free/css/all.min.css"; */
 import '../App.css';
-import {Modal} from "react-bootstrap";
+import {Modal,Container} from "react-bootstrap";
 
 class LoadHolidaysTable extends React.Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class LoadHolidaysTable extends React.Component {
       isChecked: false,
       holidaypolicy:true,
       rounding:false,
+      holidayshow:false,
     };
   } 
   handleChange = (date) => {
@@ -161,6 +162,34 @@ class LoadHolidaysTable extends React.Component {
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-3 col-xl-3 col-md-3 col-sm-12 m-0"><i class="fa fa-plus pr-2"></i>Add New Holiday Policy</button>
       </div>
       <MDBDataTable hover info={false}  responsive={true} displayEntries={false} noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} searchTop searchBottom={false} />
+     
+    <Modal size="sm"
+          show={this.state.holidayshow}
+           aria-labelledby="contained-modal-title-vcenter">
+      <Modal.Header>
+        <Modal.Title className="m-auto h6" id="contained-modal-title-vcenter">
+        Add Holiday
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="show-grid small_font">
+        <Container>
+          <div className="form-group">
+              <label for="exampleInputEmail1">Holiday Title*</label>
+              <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Holiday Title" />
+            </div>
+            <div className="form-group">
+              <label for="exampleInputEmail1">Date*</label>
+              <input type="date" className="form-control" placeholder="Enter Date"/>
+            </div>          
+        </Container>
+      </Modal.Body>
+      <Modal.Footer>
+      <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
+        <li><button onClick={() => this.setState({ holidayshow: false })} class="button cancel-btn py-2 px-4 m-0 mr-2">Close</button></li>
+        <li><button onClick={() => this.setState({ holidayshow: false })} class="button resend-btn py-2 px-4 m-0">Save</button></li>
+      </ul>
+      </Modal.Footer>
+    </Modal>
       <Modal  size="lg"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton>
@@ -181,12 +210,12 @@ class LoadHolidaysTable extends React.Component {
                 <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12">
                  <label className="mr-2">Reoccuring Paid Holidays</label>
                     <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
-                        <option>Joe Smith</option>
-                        <option>Jesse Lake</option>
+                        <option>New Years Day(January 1)</option>
+                        <option>Christmas(December 25)</option>
                     </select>
                 </div>
                 <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <button class="button resend-btn py-2 px-4 m-0 text-center mt-5">Add Holiday</button>
+                    <button class="button resend-btn py-2 px-4 m-0 text-center mt-5" onClick={() => this.setState({ holidayshow: true })}>Add Holiday</button>
                 </div>
             </div> 
       </Modal.Body>
@@ -222,7 +251,7 @@ class LoadHolidaysTable extends React.Component {
                     </select>
                 </div>
                 <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <button class="button resend-btn py-2 px-4 m-0 text-center mt-5">Add Holiday</button>
+                    <button class="button resend-btn py-2 px-4 m-0 text-center mt-5" onClick={() => this.setState({ holidayshow: true })}>Add Holiday</button>
                 </div>
             </div> 
       </Modal.Body>

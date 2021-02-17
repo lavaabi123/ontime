@@ -157,6 +157,7 @@ class PoliciesTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
+   
           </div>
         </div>
         <div

@@ -182,7 +182,7 @@ class OrganizationTabs extends Component {
                     <label>Timesheet Recording Period*</label>
                       <select placeholder="Select" className="form-control" name="state">
                           <option>Select</option>
-                          <option>Weekly</option>
+                          <option selected='selected'>Weekly</option>
                           <option>Bi-Weekly</option>
                       </select>
                   </div>

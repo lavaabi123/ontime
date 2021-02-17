@@ -130,7 +130,7 @@ class LoadTable extends React.Component {
         field: 'approver',
       },
       {
-        label: 'Allowance',
+        label: 'Allowance of Extra Hours',
         field: 'allowance',
       },
       {
@@ -151,7 +151,7 @@ class LoadTable extends React.Component {
         id: '1',
         type: 'Duty',
         approver: 'Joe Smith',
-        allowance: 'No',
+        allowance: "Allowed \n Start Date - 02/14/2021 \n End Date - 02/15/2021 \n Max Hours - 2:00PM",
         clock: 'N/A',
         action: <i class="fa fa-edit" onClick={() => this.setState({ editshow: true })}></i>,
       },
@@ -162,7 +162,7 @@ class LoadTable extends React.Component {
         id: '2',
         type: 'Duty',
         approver: 'Joe Smith',
-        allowance: 'No',
+        allowance: 'Not Allowed',
         clock: 'N/A',
         action: <i class="fa fa-edit" onClick={() => this.setState({ editshow: true })}></i>,
       },
@@ -173,7 +173,7 @@ class LoadTable extends React.Component {
         id: '3',
         type: 'Duty',
         approver: 'Joe Smith',
-        allowance: 'No',
+        allowance: 'Not Allowed',
         clock: 'N/A',
         action: <i class="fa fa-edit"  onClick={() => this.setState({ editshow: true })} ></i>,
       },
@@ -185,7 +185,9 @@ class LoadTable extends React.Component {
         <h6 class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">List of Activities. Total number of activities: 3</h6>
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0"><i class="fa fa-plus pr-2"></i>Add Activity</button>
       </div>
-      <MDBDataTable hover info={false}  responsive={true} displayEntries={false} noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} searching={false} />
+      <MDBDataTable hover info={false} className="activitytable"  responsive={true} displayEntries={false} 
+      noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} 
+      data={datatable} searching={false} />
       <Modal  size="lg"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton>
@@ -235,7 +237,8 @@ class LoadTable extends React.Component {
                 <span className="ml-2">
                 <i class="fa fa-question-circle" aria-hidden="true"></i></span>
                 <span>Not seeing your activity time approver? Go to Employees to set up the approver</span></MDBTooltip></label>
-                <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
+                <select placeholder="Select" className="form-control" name="approver">
+                    <option>Select</option>
                     <option>Joe Smith</option>
                     <option>Jesse Lake</option>
                 </select>

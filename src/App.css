@@ -355,6 +355,9 @@ select.form-control {
 .downicon:hover{ 
   cursor: pointer;
 }
+.activitytable td{
+  white-space: pre-line;
+}
 .admin-header .navbar-brand {
   width: 25%;
   margin-left: 0%;
