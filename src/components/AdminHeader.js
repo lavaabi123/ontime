@@ -22,7 +22,7 @@ render() {
                         <Nav.Link as={NavLink} to="/activities">Activities</Nav.Link>
                         <Nav.Link as={NavLink} to="/policies">Policies</Nav.Link>
                         <Nav.Link as={NavLink} to="/employees">Employees</Nav.Link>
-                        <Nav.Link as={NavLink} to="/index">Reporting</Nav.Link>                        
+                        <Nav.Link as={NavLink} to="/reporting">Reporting</Nav.Link>                        
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
