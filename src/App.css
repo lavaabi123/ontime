@@ -479,11 +479,11 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
   box-shadow: none !important;
 }
 .header-profile-img{
-  width: 65px !important;
+  width: 50px !important;
   border-radius: 50%;
 }
 .drop-menu-header{
-  margin-top: 21px;
+  margin-top: 15px;
 }
 .sticky-top{
   z-index: 0 !important;
@@ -517,7 +517,14 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
 .bg-amber{
   background-color: #fff8e1 ;
 }
-
+.dropdown-item:focus, .dropdown-item:hover{
+  color: #fff !important;
+  background-color: #7DC24B !important;
+  text-decoration: none;
+}
+.dropdown-menu a:focus,.dropdown-menu a:hover{ 
+  text-decoration: none;
+}
 @media (max-width: 767px){
 .bs-stepper-content {
   padding: 0 20px 20px !important;
