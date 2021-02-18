@@ -5,7 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 /* import "mdbreact/dist/css/mdb.css";
 import "@fortawesome/fontawesome-free/css/all.min.css"; */
 import '../App.css';
-import {Modal, Row,Col, Card} from "react-bootstrap";
+import {Modal, Row,Col,Nav, Card} from "react-bootstrap";
+import { NavLink} from "react-router-dom";
 
 class LoadTimesheetsTable extends React.Component {
   constructor(props) {
@@ -158,7 +159,7 @@ class LoadTimesheetsTable extends React.Component {
     rows: [
       {
         check: <input type="checkbox" />,
-        start: '4/24/2020',
+        start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0">4/24/2020</Nav.Link>,
         status: 'Not Summited',
         last_name: 'Allen',
         first_name: 'Joe',
