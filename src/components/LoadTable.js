@@ -130,8 +130,20 @@ class LoadTable extends React.Component {
         field: 'approver',
       },
       {
-        label: 'Allowance of Extra Hours',
+        label: 'Extra Hours',
         field: 'allowance',
+      },
+      {
+        label: 'Start Date',
+        field: 'startdate',
+      },
+      {
+        label: 'End Date',
+        field: 'enddate',
+      },
+      {
+        label: 'Max Hours',
+        field: 'maxhours',
       },
       {
         label: 'Clock Round',
@@ -140,6 +152,11 @@ class LoadTable extends React.Component {
       {
         label: '',
         field: 'action',
+        sort: 'disabled',
+      },
+      {
+        label: '',
+        field: 'delete',
         sort: 'disabled',
       },
     ],
@@ -151,9 +168,13 @@ class LoadTable extends React.Component {
         id: '1',
         type: 'Duty',
         approver: 'Joe Smith',
-        allowance: "Allowed \n Start Date - 02/14/2021 \n End Date - 02/15/2021 \n Max Hours - 2:00PM",
+        allowance: "Allowed",
+        startdate:"02/14/2021",
+        enddate:"02/15/2021",
+        maxhours:"2hrs",
         clock: 'N/A',
         action: <i class="fa fa-edit" onClick={() => this.setState({ editshow: true })}></i>,
+        delete: <i class="fa fa-trash"></i>,
       },
       {
         name: 'John Smith',
@@ -163,8 +184,12 @@ class LoadTable extends React.Component {
         type: 'Duty',
         approver: 'Joe Smith',
         allowance: 'Not Allowed',
+        startdate:"-",
+        enddate:"-",
+        maxhours:"-",
         clock: 'N/A',
         action: <i class="fa fa-edit" onClick={() => this.setState({ editshow: true })}></i>,
+        delete: <i class="fa fa-trash"></i>,
       },
       {
         name: 'Helen',
@@ -174,8 +199,12 @@ class LoadTable extends React.Component {
         type: 'Duty',
         approver: 'Joe Smith',
         allowance: 'Not Allowed',
+        startdate:"-",
+        enddate:"-",
+        maxhours:"-",
         clock: 'N/A',
         action: <i class="fa fa-edit"  onClick={() => this.setState({ editshow: true })} ></i>,
+        delete: <i class="fa fa-trash"></i>,
       },
     ],
   }
@@ -243,28 +272,28 @@ class LoadTable extends React.Component {
                     <option>Jesse Lake</option>
                 </select>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12"  style={this.state.rounding === false ? {} : { display: 'none' }}>
                   <label>TimeClock Rounding Policy</label>
                   <select disabled={this.state.rounding} placeholder="Select" className="form-control" name="approver">
                       <option>N/A</option>
                   </select>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12"  style={this.state.holidaypolicy === false ? {} : { display: 'none' }}>
                   <label>Holiday Policy</label>
                   <select disabled={this.state.holidaypolicy} placeholder="Select" className="form-control" name="approver">
                       <option>Standard</option>
                   </select>
                 </div>
             </div> 
-            <div className="form-group">
+            <div className="form-group"  style={this.state.holidaypolicy === true ? {} : { display: 'none' }}>
               <label>Setup for Allowance of Extra Hours</label>
               </div>
-              <div className="form-group row">
+              <div className="form-group row" style={this.state.holidaypolicy === true ? {} : { display: 'none' }}>
               <label className="pr-2 float-left col-2" style={{marginTop:'-4px'}}>Allowed</label>
               <input type="checkbox" defaultChecked={this.state.isChecked}
           onChange={this.toggleChange} value="1" className="form-control" style={{width:'3%'}} name="country"/>                  
             </div>
-              <div className="form-group row">
+              <div className="form-group row" style={this.state.holidaypolicy === true ? {} : { display: 'none' }}>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
               <label className="pr-2">Start Week</label>
               <DatePicker selected={ this.state.startDate }
@@ -279,26 +308,11 @@ class LoadTable extends React.Component {
           filterDate={this.isWeekday1} onChange={ this.handleChange1 } className="form-control" 
           dateFormat="MM/dd/yyyy"/>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="pr-2">Max Hours</label>
-              <DatePicker selected={ this.state.startDate2 }
-          name="startDate" className="form-control" customInput={<this.ExampleCustomInput2 />} 
-           onChange={ this.handleChange2 } showTimeSelect
-           showTimeSelectOnly
-           timeIntervals={15}
-           timeCaption="Time"
-           dateFormat="h:mm aa" className="form-control" dateFormat="MM/dd/yyyy"/>
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 row">
+              <label className="pr-2 col-5 mt-auto">Max Hours</label>
+              <input type='number' class='form-control col-7' disabled={this.state.startdisabled} style={{ height:'32px' }} />
             </div>
             </div>
-            <div className="form-group row pt-3">
-              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                <input type="button" className="btn btn-danger" value="Delete Activity" />
-              </div>
-              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12">
-                <p>Do you want to permanently delete this activity? This cannot be undone and you will 
-                  lose all data for this activity. It is recommended that you inactive the activity.</p>
-              </div>
-            </div>  
       </Modal.Body>
       <Modal.Footer>
       <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
@@ -361,28 +375,28 @@ class LoadTable extends React.Component {
                     <option>Jesse Lake</option>
                 </select>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12"  style={this.state.rounding === false ? {} : { display: 'none' }}>
                   <label>TimeClock Rounding Policy</label>
                   <select disabled={this.state.rounding} placeholder="Select" className="form-control" name="approver">
                       <option>N/A</option>
                   </select>
                 </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12"  style={this.state.holidaypolicy === false ? {} : { display: 'none' }}>
                   <label>Holiday Policy</label>
                   <select disabled={this.state.holidaypolicy} placeholder="Select" className="form-control" name="approver">
                       <option>Standard</option>
                   </select>
                 </div>
             </div> 
-            <div className="form-group">
+            <div className="form-group"  style={this.state.holidaypolicy === true ? {} : { display: 'none' }}>
               <label>Setup for Allowance of Extra Hours</label>
               </div>
-              <div className="form-group row">
+              <div className="form-group row" style={this.state.holidaypolicy === true ? {} : { display: 'none' }}>
               <label className="pr-2 float-left col-2" style={{marginTop:'-4px'}}>Allowed</label>
               <input type="checkbox" defaultChecked={this.state.isChecked}
           onChange={this.toggleChange} value="1" className="form-control" style={{width:'3%'}} name="country"/>                  
             </div>
-              <div className="form-group row">
+              <div className="form-group row" style={this.state.holidaypolicy === true ? {} : { display: 'none' }}>
             <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
               <label className="pr-2">Start Week</label>
               <DatePicker selected={ this.state.startDate }
@@ -397,18 +411,12 @@ class LoadTable extends React.Component {
           filterDate={this.isWeekday1} onChange={ this.handleChange1 } className="form-control" 
           dateFormat="MM/dd/yyyy"/>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="pr-2">Max Hours</label>
-              <DatePicker selected={ this.state.startDate2 }
-          name="startDate" className="form-control" customInput={<this.ExampleCustomInput2 />} 
-           onChange={ this.handleChange2 } showTimeSelect
-           showTimeSelectOnly
-           timeIntervals={15}
-           timeCaption="Time"
-           dateFormat="h:mm aa" className="form-control" dateFormat="MM/dd/yyyy"/>
+            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 row">
+              <label className="pr-2 col-5 mt-auto">Max Hours</label>
+              <input type='number' class='form-control col-7' disabled={this.state.startdisabled} style={{ height:'32px' }} />
             </div>
             </div>
-            <div className="form-group row pt-3">
+            {/* <div className="form-group row pt-3">
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                 <input type="button" className="btn btn-danger" value="Delete Activity" />
               </div>
@@ -416,7 +424,7 @@ class LoadTable extends React.Component {
                 <p>Do you want to permanently delete this activity? This cannot be undone and you will 
                   lose all data for this activity. It is recommended that you inactive the activity.</p>
               </div>
-            </div>  
+  </div>  */}
       </Modal.Body>
       <Modal.Footer>
       <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">

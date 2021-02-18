@@ -17,6 +17,12 @@ class OrganizationTabs extends Component {
       editsupershow: false,
       name: 'React',
       remove: false,
+      edit: true,
+      editable: true,
+      timeedit: true,
+      timeeditable: true,
+      reset: false,
+      superreset: false,
     };
   } 
   componentDidMount() {
@@ -37,19 +43,16 @@ class OrganizationTabs extends Component {
           <div className="bs-stepper-header">
             <div className="step" data-target="#test-l-1">
               <button className="step-trigger">
-                <span className="bs-stepper-circle">1</span>
                 <span className="bs-stepper-label">Organization Profile</span>
               </button>
             </div>
             <div className="step" data-target="#test-l-2">
               <button className="step-trigger">
-                <span className="bs-stepper-circle">2</span>
                 <span className="bs-stepper-label">Date/Time Preferences</span>
               </button>
             </div>
             <div className="step" data-target="#test-l-3">
               <button className="step-trigger">
-                <span className="bs-stepper-circle">3</span>
                 <span className="bs-stepper-label">Manage Super/Admin User</span>
               </button>
               
@@ -58,30 +61,36 @@ class OrganizationTabs extends Component {
           <div className="bs-stepper-content">
             <form onSubmit={this.onSubmit}>
               <div id="test-l-1" className="content  pl-2 width-80 small_font">
-                <div className="form-group">
+                <div className="form-group row">
+                  <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                   <label for="exampleInputEmail1">Organization Name*</label>
-                  <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter email" />
+                  <input type="email" disabled='disabled' value="ABC Company" className="form-control" id="exampleInputEmail1" placeholder="Enter Organization Name" />
+                  </div>
+                  <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <label>TIN Number*</label>
+                    <input type="text" disabled='disabled' value="123" className="form-control" placeholder="TIN Number" name="tin_number"/>
+                  </div>
                 </div>
                 <div className="form-group">
                   <label for="exampleInputEmail1">Upload Logo</label>
-                  <input type="file" className="form-control"/>
+                  <input type="file" disabled={this.state.editable} className="form-control"/>
                 </div>
                 <div className="form-group">
                   <label>Address*</label>
-                  <input type="email" className="form-control" placeholder="Enter Address" />
+                  <input type="email" disabled={this.state.editable} className="form-control" placeholder="Enter Address" />
                 </div>
                 <div className="form-group">
                   <label>Address 2</label>
-                  <input type="email" className="form-control" placeholder="Enter Address 2" />
+                  <input type="email" disabled={this.state.editable} className="form-control" placeholder="Enter Address 2" />
                 </div>
                 <div className="row form-group">
                   <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>City*</label>
-                      <input type="text" className="form-control" placeholder="City" name="city"/>
+                      <input type="text" disabled={this.state.editable} className="form-control" placeholder="City" name="city"/>
                   </div>
                   <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                   <label>State*</label>
-                      <select placeholder="State" className="form-control" name="state">
+                      <select placeholder="State" disabled={this.state.editable} className="form-control" name="state">
                           <option>State</option>
                           <option>Alabama - AL</option>
                           <option>Alaska - AK</option>
@@ -140,47 +149,46 @@ class OrganizationTabs extends Component {
                   </div>
                   <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>Zip Code*</label>
-                    <input type="text" className="form-control" placeholder="Zip Code" name="zip_code"/>
+                    <input type="text" disabled={this.state.editable} className="form-control" placeholder="Zip Code" name="zip_code"/>
                   </div>
                 </div>
                 <div className="row form-group">
                   <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>Country*</label>
-                      <input type="text" className="form-control" placeholder="Country" name="country"/>
+                      <input type="text" disabled={this.state.editable} className="form-control" placeholder="Country" name="country"/>
                   </div>
                   <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>Phone Number*</label>
-                    <input type="text" className="form-control" placeholder="Phone Number" name="phone_number"/>  
+                    <input type="text" disabled={this.state.editable} className="form-control" placeholder="Phone Number" name="phone_number"/>  
                   </div>
                   <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <label>Fax Number*</label>
-                    <input type="text" className="form-control" placeholder="Fax Number" name="fax_number"/>
+                    <label>Fax Number</label>
+                    <input type="text" disabled={this.state.editable} className="form-control" placeholder="Fax Number" name="fax_number"/>
                   </div>
                 </div>
                 <div className="row form-group">
                   <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>Email*</label>
-                      <input type="text" className="form-control" placeholder="Email" name="email"/>
+                      <input type="text" disabled={this.state.editable} className="form-control" placeholder="Email" name="email"/>
                   </div>
                   <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <label>Website*</label>
-                    <input type="text" className="form-control" placeholder="Website" name="website"/>  
-                  </div>
-                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <label>TIN Number*</label>
-                    <input type="text" className="form-control" placeholder="TIN Number" name="tin_number"/>
+                    <label>Website</label>
+                    <input type="text" disabled={this.state.editable} className="form-control" placeholder="Website" name="website"/>  
                   </div>
                 </div>
-                <ul className="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
-                  <li><button className="button cancel-btn py-2 px-4 m-0 mr-2">Cancel</button></li>
-                  <li><button className="button resend-btn py-2 px-4 m-0">Save Changes</button></li>
+                <ul style={this.state.edit === true ? {} : { display: 'none' }} className="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
+                  <li><button  onClick={() => this.setState({ edit: false,editable:false })} className="button resend-btn py-2 px-4 m-0 mr-2">Edit</button></li>
+                </ul>
+                <ul style={this.state.edit === true ? { display: 'none' } : {}} className="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
+                  <li><button  onClick={() => this.setState({ edit: true,editable:true })} className="button cancel-btn py-2 px-4 m-0 mr-2">Cancel</button></li>
+                  <li><button  onClick={() => this.setState({ edit: true,editable:true })} className="button resend-btn py-2 px-4 m-0">Save Changes</button></li>
                 </ul>
               </div>
               <div id="test-l-2" className="content  pl-2 width-80 small_font">
                 <div className="row form-group">
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label>Timesheet Recording Period*</label>
-                      <select placeholder="Select" className="form-control" name="state">
+                      <select placeholder="Select" disabled={this.state.timeeditable} className="form-control" name="state">
                           <option>Select</option>
                           <option selected='selected'>Weekly</option>
                           <option>Bi-Weekly</option>
@@ -190,7 +198,7 @@ class OrganizationTabs extends Component {
                 <div className="row form-group">
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label>Date Format*</label>
-                      <select placeholder="Select" className="form-control" name="state">
+                      <select placeholder="Select" disabled={this.state.timeeditable} className="form-control" name="state">
                           <option>Select</option>
                           <option>(mm/dd/yyyy)</option>
                           <option>(dd-mm-yyyy)</option>
@@ -198,7 +206,7 @@ class OrganizationTabs extends Component {
                   </div>
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label>Time Format*</label>
-                      <select placeholder="Select" className="form-control" name="state">
+                      <select placeholder="Select" disabled={this.state.timeeditable} className="form-control" name="state">
                           <option>Select</option>
                           <option>08:09:00 AM</option>
                           <option>20:09:00</option>
@@ -208,7 +216,7 @@ class OrganizationTabs extends Component {
                 <div className="row form-group">
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label>Day of the week calendar starts on*</label>
-                      <select placeholder="Select" className="form-control" name="state">
+                      <select placeholder="Select" disabled={this.state.timeeditable} className="form-control" name="state">
                           <option>Select</option>
                           <option>Sunday</option>
                           <option>Monday</option>
@@ -220,11 +228,11 @@ class OrganizationTabs extends Component {
                       </select>
                   </div>
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                    <label>Timesheet Recording Period*</label>
-                      <select placeholder="Select" className="form-control" name="state">
+                      <label>Pay Period Frequency*</label>
+                      <select placeholder="Select" disabled={this.state.timeeditable} className="form-control" name="state">
                           <option>Select</option>
-                          <option>Weekly</option>
-                          <option>Bi-Weekly</option>
+                          <option>Bi-Weekly(26/year)</option>
+                          <option>Semi-Monthly(24/year)</option>
                       </select>
                   </div>
                 </div>
@@ -234,39 +242,48 @@ class OrganizationTabs extends Component {
                   </div>
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label>From Date*</label>
-                    <input type="date" className="form-control" placeholder="From Date" name="country"/>
+                    <input type="date" disabled={this.state.timeeditable} className="form-control" placeholder="From Date" name="country"/>
                   </div>
                   <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <label>End Date*</label>
-                    <input type="date" className="form-control" placeholder="End Date" name="country"/>
+                    <input type="date" disabled={this.state.timeeditable} className="form-control" placeholder="End Date" name="country"/>
                   </div>
                 </div>
-                <ul className="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
-                  <li><button className="button cancel-btn py-2 px-4 m-0 mr-2">Cancel</button></li>
-                  <li><button className="button resend-btn py-2 px-4 m-0">Save Changes</button></li>
+                <ul style={this.state.timeedit === true ? {} : { display: 'none' }} className="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
+                  <li><button  onClick={() => this.setState({ timeedit: false,timeeditable:false })} className="button resend-btn py-2 px-4 m-0 mr-2">Edit</button></li>
+                </ul>
+                <ul style={this.state.timeedit === true ? { display: 'none' } : {}} className="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
+                  <li><button  onClick={() => this.setState({ timeedit: true,timeeditable:true })} className="button cancel-btn py-2 px-4 m-0 mr-2">Cancel</button></li>
+                  <li><button  onClick={() => this.setState({ timeedit: true,timeeditable:true })} className="button resend-btn py-2 px-4 m-0">Save Changes</button></li>
                 </ul>
               </div>
-              <div id="test-l-3" className="content pl-2 width-80 small_font">
+              <div id="test-l-3" className="content pl-2 small_font">
                 <h6>Super User Account Management</h6>
                 <label>Add Super User<button type="button" onClick={() => this.setState({ supershow: true })} className="button resend-btn mt-1">Add</button></label>
                
                 <p className="mt-1 font-weight-bold">Manage Super User Information and Rights</p>
                 <div className="row form-group border-bottom">
                   <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <label>John Henry</label>
+                    <label>John Henry (Root User)</label> 
+                    <p><span className="link-style pl-0" onClick={() => this.setState({ editsupershow: true })}>Edit</span> | 
+                    <span className="link-style" onClick={() => this.setState({ superreset: true })}>Reset Password</span></p>
+                  
                   </div>
-                  <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                    <p><span className="link-style" onClick={() => this.setState({ editsupershow: true })}>Edit</span> | 
-                    <span className="link-style" onClick={() => this.setState({ remove: true })}>Remove</span></p>
+                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <input type="checkbox" defaultChecked disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label">Final Approval of Timesheet</label>
                   </div>
                 </div>
                 <div className="row form-group border-bottom">
                   <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <label>Helen Nisha</label>
+                    <label>Helen Nisha</label> <p><span className="link-style pl-0" onClick={() => this.setState({ editsupershow: true })}>Edit</span> | 
+                    <span className="link-style" onClick={() => this.setState({ remove: true })}>Remove</span> | 
+                    <span className="link-style" onClick={() => this.setState({ superreset: true })}>Reset Password</span></p>
+                  
                   </div>
-                  <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                    <p><span className="link-style" onClick={() => this.setState({ editsupershow: true })}>Edit</span> | 
-                    <span className="link-style" onClick={() => this.setState({ remove: true })}>Remove</span></p>
+                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <input type="checkbox" disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label">Final Approval of Timesheet</label>
                   </div>
                  
                 </div>
@@ -276,21 +293,55 @@ class OrganizationTabs extends Component {
                 <div className="row form-group border-bottom">
                   <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
                     <label>John Henry</label>
+                    <p><span className="link-style pl-0" onClick={() => this.setState({ editshow: true })}>Edit</span> | 
+                    <span className="link-style" onClick={() => this.setState({ remove: true })}>Remove</span> | 
+                    <span className="link-style" onClick={() => this.setState({ reset: true })}>Reset Password</span></p>                  
                   </div>
-                  <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                    <p><span className="link-style" onClick={() => this.setState({ editshow: true })}>Edit</span> | 
-                    <span className="link-style" onClick={() => this.setState({ remove: true })}>Remove</span></p>
+                  <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12 row">
+                  <div className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0">
+                    <input type="checkbox" defaultChecked disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label">Modify Employees</label>
+                  </div>
+                  <div className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0">
+                    <input type="checkbox" disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label">Modify Policies</label>
+                  </div>
+                  <div className="col-xl-2 col-lg-2 col-md-2 col-sm-10 p-0">
+                    <input type="checkbox" defaultChecked disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label pl-1">Do Reporting</label>
+                  </div>
+                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-10 p-0">
+                    <input type="checkbox" disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label">Final Approval of Timesheet</label>
+                  </div> 
                   </div>
                 </div>
                 <div className="row form-group border-bottom">
-                  <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                    <label>Helen Nisha</label>
+                <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                    <label>Joe Smith</label>
+                    <p><span className="link-style pl-0" onClick={() => this.setState({ editshow: true })}>Edit</span> | 
+                    <span className="link-style" onClick={() => this.setState({ remove: true })}>Remove</span> | 
+                    <span className="link-style" onClick={() => this.setState({ reset: true })}>Reset Password</span></p>
+                  
                   </div>
-                  <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                    <p><span className="link-style" onClick={() => this.setState({ editshow: true })}>Edit</span> | 
-                    <span className="link-style" onClick={() => this.setState({ remove: true })}>Remove</span></p>
+                  <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12 row">
+                  <div className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0">
+                    <input type="checkbox" disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label">Modify Employees</label>
                   </div>
-                 
+                  <div className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0">
+                    <input type="checkbox" disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label">Modify Policies</label>
+                  </div>
+                  <div className="col-xl-2 col-lg-2 col-md-2 col-sm-10 p-0">
+                    <input type="checkbox" defaultChecked disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label pl-1">Do Reporting</label>
+                  </div>
+                  <div className="col-xl-4 col-lg-4 col-md-4 col-sm-10 p-0">
+                    <input type="checkbox" defaultChecked disabled='disabled' className="form-control permission-checkbox" name="country"/>
+                    <label className="permission-label">Final Approval of Timesheet</label>
+                  </div> 
+                  </div>
                 </div>
               </div>
             </form>
@@ -304,9 +355,15 @@ class OrganizationTabs extends Component {
       </Modal.Header>
       <Modal.Body className="show-grid small_font">
         <Container>
-          <div className="form-group">
-              <label for="exampleInputEmail1">Name*</label>
-              <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Name" />
+            <div className="form-group row">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <label for="exampleInputEmail1">First Name*</label>
+                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter First Name" />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <label for="exampleInputEmail1">Last Name*</label>
+                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Last Name" />
+                </div>
             </div>
             <div className="form-group">
               <label for="exampleInputEmail1">Email*</label>
@@ -346,9 +403,15 @@ class OrganizationTabs extends Component {
       </Modal.Header>
       <Modal.Body className="show-grid small_font">
         <Container>
-          <div className="form-group">
-              <label for="exampleInputEmail1">Name*</label>
-              <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Name" />
+            <div className="form-group row">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <label for="exampleInputEmail1">First Name*</label>
+                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter First Name" />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <label for="exampleInputEmail1">Last Name*</label>
+                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Last Name" />
+                </div>
             </div>
             <div className="form-group">
               <label for="exampleInputEmail1">Email*</label>
@@ -358,24 +421,8 @@ class OrganizationTabs extends Component {
               <label>Login Name*</label>
               <input type="text" className="form-control" placeholder="Enter Login Name" />
             </div>
-            <div className="form-group">
-              <label>Password*</label>
-              <input type="password" className="form-control" placeholder="Enter Password" />
-            </div>
             <div className="p-3 form-group row">
-              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0">
-              <input type="checkbox" className="form-control permission-checkbox" name="country"/>
-              <label className="permission-label">Modify Employees</label>
-              </div>
-              <div className="col-xl-2 col-lg-2 col-md-2 col-sm-10 p-0">
-              <input type="checkbox" className="form-control permission-checkbox" name="country"/>
-              <label className="permission-label">Modify Policies</label>
-              </div>
-              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0 pl-4">
-              <input type="checkbox" className="form-control permission-checkbox" name="country"/>
-              <label className="permission-label pl-1">Do Reporting</label>
-              </div>
-              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-10 p-0">
+              <div className="col-xl-5 col-lg-5 col-md-5 col-sm-10 p-0">
               <input type="checkbox" className="form-control permission-checkbox" name="country"/>
               <label className="permission-label">Final Approval of Timesheet</label>
               </div>  
@@ -389,7 +436,7 @@ class OrganizationTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal size="lg"  onHide={() => this.setState({ show: false })}
+    <Modal size="xl"  onHide={() => this.setState({ show: false })}
           show={this.state.show}
            aria-labelledby="example-modal-sizes-title-lg">
       <Modal.Header closeButton>
@@ -399,9 +446,15 @@ class OrganizationTabs extends Component {
       </Modal.Header>
       <Modal.Body className="show-grid small_font">
         <Container>
-          <div className="form-group">
-              <label for="exampleInputEmail1">Name*</label>
-              <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Name" />
+            <div className="form-group row">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <label for="exampleInputEmail1">First Name*</label>
+                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter First Name" />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <label for="exampleInputEmail1">Last Name*</label>
+                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Last Name" />
+                </div>
             </div>
             <div className="form-group">
               <label for="exampleInputEmail1">Email*</label>
@@ -442,7 +495,7 @@ class OrganizationTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal size="lg"  onHide={() => this.setState({ editshow: false })}
+    <Modal size="xl"  onHide={() => this.setState({ editshow: false })}
           show={this.state.editshow}
            aria-labelledby="example-modal-sizes-title-lg">
       <Modal.Header closeButton>
@@ -452,9 +505,15 @@ class OrganizationTabs extends Component {
       </Modal.Header>
       <Modal.Body className="show-grid small_font">
         <Container>
-          <div className="form-group">
-              <label for="exampleInputEmail1">Name*</label>
-              <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Name" />
+            <div className="form-group row">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <label for="exampleInputEmail1">First Name*</label>
+                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter First Name" />
+                </div>
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                  <label for="exampleInputEmail1">Last Name*</label>
+                  <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Enter Last Name" />
+                </div>
             </div>
             <div className="form-group">
               <label for="exampleInputEmail1">Email*</label>
@@ -463,10 +522,6 @@ class OrganizationTabs extends Component {
             <div className="form-group">
               <label>Login Name*</label>
               <input type="text" className="form-control" placeholder="Enter Login Name" />
-            </div>
-            <div className="form-group">
-              <label>Password*</label>
-              <input type="password" className="form-control" placeholder="Enter Password" />
             </div>
             <div className="p-3 form-group row">
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0">
@@ -495,8 +550,60 @@ class OrganizationTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    
-    
+    <Modal size="md"  onHide={() => this.setState({ superreset: false })}
+          show={this.state.superreset}
+           aria-labelledby="example-modal-sizes-title-lg">
+      <Modal.Header closeButton>
+        <Modal.Title className="h6" id="example-modal-sizes-title-lg">
+        Reset Super User Password
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="show-grid small_font">
+        <Container>
+            <div className="form-group">
+              <label for="exampleInputEmail1">Password*</label>
+              <input type="email" className="form-control" placeholder="Enter Password"/>
+            </div>
+            <div className="form-group">
+              <label>Confirm Password*</label>
+              <input type="text" className="form-control" placeholder="Enter Confirm Password" />
+            </div>       
+        </Container>
+      </Modal.Body>
+      <Modal.Footer>
+      <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
+        <li><button onClick={() => this.setState({ superreset: false })} class="button cancel-btn py-2 px-4 m-0 mr-2">Close</button></li>
+        <li><button onClick={() => this.setState({ superreset: false })} class="button resend-btn py-2 px-4 m-0">Save</button></li>
+      </ul>
+      </Modal.Footer>
+    </Modal>
+    <Modal size="md"  onHide={() => this.setState({ reset: false })}
+          show={this.state.reset}
+           aria-labelledby="example-modal-sizes-title-lg">
+      <Modal.Header closeButton>
+        <Modal.Title className="h6" id="example-modal-sizes-title-lg">
+        Reset Administrator Password
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body className="show-grid small_font">
+        <Container>
+            <div className="form-group">
+              <label for="exampleInputEmail1">Password*</label>
+              <input type="email" className="form-control" placeholder="Enter Password"/>
+            </div>
+            <div className="form-group">
+              <label>Confirm Password*</label>
+              <input type="text" className="form-control" placeholder="Enter Confirm Password" />
+            </div>       
+        </Container>
+      </Modal.Body>
+      <Modal.Footer>
+      <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
+        <li><button onClick={() => this.setState({ reset: false })} class="button cancel-btn py-2 px-4 m-0 mr-2">Close</button></li>
+        <li><button onClick={() => this.setState({ reset: false })} class="button resend-btn py-2 px-4 m-0">Save</button></li>
+      </ul>
+      </Modal.Footer>
+    </Modal>
           </div>
         </div>
         <div

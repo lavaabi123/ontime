@@ -182,6 +182,34 @@ class LoadEmployeesTable extends React.Component {
   }
   return (
     <div>
+      
+      <div className="form-group row small_font">
+        <div className="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+          <label>Group</label>
+          <select className="form-control">
+            <option>All Group</option>
+            <option>Group 1</option>
+          </select>
+        </div>
+        <div className="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+          <label>Activity</label>
+          <select className="form-control">
+            <option>All Activity</option>
+            <option>Activity 1</option>
+          </select>
+        </div>
+        <div className="col-xl-2 col-lg-2 col-md-2 col-sm-12">
+          <label>Status</label>
+          <select className="form-control">
+            <option>All Employees</option>
+            <option>Active Employees</option>
+            <option>Inactive Employees</option>
+          </select>
+        </div>
+        <div className="col-xl-2 col-lg-2 col-md-2 col-sm-12 mt-auto">
+          <button class="button resend-btn py-2 px-4 m-0">Filter</button>
+        </div>
+      </div>
       <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
         <h6 class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">The Number of Total Employees : (3)</h6>
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0"><i class="fa fa-plus pr-2"></i>Add Employees</button>
@@ -322,8 +350,60 @@ class LoadEmployeesTable extends React.Component {
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>State</label>
                     <select placeholder="Select" className="form-control" name="activity_status">
-                        <option>Alabama-AL</option>
-                        <option>State 2</option>
+                    <option>State</option>
+                          <option>Alabama - AL</option>
+                          <option>Alaska - AK</option>
+                          <option>Alabama - AL</option>
+                          <option>Arizona - AZ</option>
+                          <option>Arkansas - AR</option>
+                          <option>California - CA</option>
+                          <option>Colorado - CO</option>
+                          <option>Connecticut - CT</option>
+                          <option>Delaware - DE</option>
+                          <option>District of Columbia - DC</option>
+                          <option>Florida - FL</option>
+                          <option>Georgia - GA</option>
+                          <option>Hawaii - HI</option>
+                          <option>Idaho - ID</option>
+                          <option>Illinois - IL</option>
+                          <option>Indiana - IN</option>
+                          <option>Iowa - IA</option>
+                          <option>Kansas - KS</option>
+                          <option>Kentucky - KY</option>
+                          <option>Louisiana - LA</option>
+                          <option>Maine - ME</option>
+                          <option>Maryland - MD</option>
+                          <option>Massachusetts - MA</option>
+                          <option>Michigan - MI</option>
+                          <option>Minnesota - MN</option>
+                          <option>Mississippi - MS</option>
+                          <option>Missouri - MO</option>
+                          <option>Montana - MT</option>
+                          <option>Nebraska - NE</option>
+                          <option>Nevada - NV</option>
+                          <option>New Hampshire - NH</option>
+                          <option>New Jersey - NJ</option>
+                          <option>New Mexico - NM</option>
+                          <option>New York - NY</option>
+                          <option>North Carolina - NC</option>
+                          <option>North Dakota - ND</option>
+                          <option>Ohio - OH</option>
+                          <option>Oklahoma - OK</option>
+                          <option>Oregon - OR</option>
+                          <option>Pennsylvania - PA</option>
+                          <option>Puerto Rico - PR</option>
+                          <option>Rhode Island - RI</option>
+                          <option>South Carolina - SC</option>
+                          <option>South Dakota - SD</option>
+                          <option>Tennessee - TN</option>
+                          <option>Texas - TX</option>
+                          <option>Utah - UT</option>
+                          <option>Vermont - VT</option>
+                          <option>Virginia - VA</option>
+                          <option>Washington - WA</option>
+                          <option>West Virginia - WV</option>
+                          <option>Wisconsin - WI</option>
+                          <option>Wyoming - WY</option>
                     </select>
                 </div>
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -331,7 +411,7 @@ class LoadEmployeesTable extends React.Component {
                     <input type="number" className="form-control" placeholder="Enter Zip Code" />
                 </div>
             </div>
-            <div className="form-group row border-bottom pb-3">
+            <div className="form-group row">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label className="mr-2">Activities</label>
                     <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
@@ -341,7 +421,8 @@ class LoadEmployeesTable extends React.Component {
                 </div>
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label className="mr-2">Assigned Group</label>
-                    <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
+                    <select placeholder="Select" className="form-control" name="approver">
+                        <option>None</option>
                         <option>Joe Smith</option>
                         <option>Jesse Lake</option>
                     </select>
@@ -351,6 +432,15 @@ class LoadEmployeesTable extends React.Component {
                 <select placeholder="Select" className="form-control" name="activity_status">
                     <option>NO</option>
                     <option>YES</option>
+                </select>
+              </div>
+            </div>
+            <div className="form-group row border-bottom pb-3">
+              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <label>Timesheet Approver*</label>
+                <select placeholder="Select" className="form-control" name="activity_status">
+                    <option>Select</option>
+                    <option>Joe Smith</option>
                 </select>
               </div>
             </div>
@@ -364,17 +454,6 @@ class LoadEmployeesTable extends React.Component {
                   <input type="file" className="form-control"/>
               </div>
             </div>
-            <div className="form-group row pt-3">
-              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                <input type="button" className="btn btn-danger" value="Archive Employee" />
-              </div>
-              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12">
-                <p>Do you want to archive this employee? By archiving, this employee's data and timesheets
-                    will no longer show up in any reports generated including historical reports. It is
-                    recommended to deactivate the employee.
-                </p>
-              </div>
-            </div> 
       </Modal.Body>
       <Modal.Footer>
       <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
@@ -425,13 +504,20 @@ class LoadEmployeesTable extends React.Component {
             <div className="form-group row border-bottom pb-3">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <label className="pr-2">Notification Time</label>
-                <DatePicker selected={ this.state.startDate2 }
-                name="startDate" className="form-control" customInput={<this.ExampleCustomInput2 />} 
-                onChange={ this.handleChange2 } showTimeSelect
-                showTimeSelectOnly
-                timeIntervals={15}
-                timeCaption="Time"
-                dateFormat="h:mm aa" className="form-control" dateFormat="MM/dd/yyyy"/>
+                <select className="form-control">
+                  <option>5 Min</option>
+                  <option>10 Min</option>
+                  <option>15 Min</option>
+                  <option>20 Min</option>
+                  <option>25 Min</option>
+                  <option selected='selected'>30 Min</option>
+                  <option>35 Min</option>
+                  <option>40 Min</option>
+                  <option>45 Min</option>
+                  <option>50 Min</option>
+                  <option>55 Min</option>
+                  <option>60 Min</option>
+                </select>
                 </div>
             </div>
             <div className="form-group row">
@@ -511,8 +597,60 @@ class LoadEmployeesTable extends React.Component {
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>State</label>
                     <select placeholder="Select" className="form-control" name="activity_status">
-                        <option>Alabama-AL</option>
-                        <option>State 2</option>
+                    <option>State</option>
+                          <option>Alabama - AL</option>
+                          <option>Alaska - AK</option>
+                          <option>Alabama - AL</option>
+                          <option>Arizona - AZ</option>
+                          <option>Arkansas - AR</option>
+                          <option>California - CA</option>
+                          <option>Colorado - CO</option>
+                          <option>Connecticut - CT</option>
+                          <option>Delaware - DE</option>
+                          <option>District of Columbia - DC</option>
+                          <option>Florida - FL</option>
+                          <option>Georgia - GA</option>
+                          <option>Hawaii - HI</option>
+                          <option>Idaho - ID</option>
+                          <option>Illinois - IL</option>
+                          <option>Indiana - IN</option>
+                          <option>Iowa - IA</option>
+                          <option>Kansas - KS</option>
+                          <option>Kentucky - KY</option>
+                          <option>Louisiana - LA</option>
+                          <option>Maine - ME</option>
+                          <option>Maryland - MD</option>
+                          <option>Massachusetts - MA</option>
+                          <option>Michigan - MI</option>
+                          <option>Minnesota - MN</option>
+                          <option>Mississippi - MS</option>
+                          <option>Missouri - MO</option>
+                          <option>Montana - MT</option>
+                          <option>Nebraska - NE</option>
+                          <option>Nevada - NV</option>
+                          <option>New Hampshire - NH</option>
+                          <option>New Jersey - NJ</option>
+                          <option>New Mexico - NM</option>
+                          <option>New York - NY</option>
+                          <option>North Carolina - NC</option>
+                          <option>North Dakota - ND</option>
+                          <option>Ohio - OH</option>
+                          <option>Oklahoma - OK</option>
+                          <option>Oregon - OR</option>
+                          <option>Pennsylvania - PA</option>
+                          <option>Puerto Rico - PR</option>
+                          <option>Rhode Island - RI</option>
+                          <option>South Carolina - SC</option>
+                          <option>South Dakota - SD</option>
+                          <option>Tennessee - TN</option>
+                          <option>Texas - TX</option>
+                          <option>Utah - UT</option>
+                          <option>Vermont - VT</option>
+                          <option>Virginia - VA</option>
+                          <option>Washington - WA</option>
+                          <option>West Virginia - WV</option>
+                          <option>Wisconsin - WI</option>
+                          <option>Wyoming - WY</option>
                     </select>
                 </div>
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -520,7 +658,7 @@ class LoadEmployeesTable extends React.Component {
                     <input type="number" className="form-control" placeholder="Enter Zip Code" />
                 </div>
             </div>
-            <div className="form-group row border-bottom pb-3">
+            <div className="form-group row">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label className="mr-2">Activities</label>
                     <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
@@ -530,7 +668,8 @@ class LoadEmployeesTable extends React.Component {
                 </div>
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label className="mr-2">Assigned Group</label>
-                    <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
+                    <select placeholder="Select" className="form-control" name="approver">
+                        <option>None</option>
                         <option>Joe Smith</option>
                         <option>Jesse Lake</option>
                     </select>
@@ -540,6 +679,15 @@ class LoadEmployeesTable extends React.Component {
                 <select placeholder="Select" className="form-control" name="activity_status">
                     <option>NO</option>
                     <option>YES</option>
+                </select>
+              </div>
+            </div>
+            <div className="form-group row border-bottom pb-3">
+              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <label>Timesheet Approver*</label>
+                <select placeholder="Select" className="form-control" name="activity_status">
+                    <option>Select</option>
+                    <option>Joe Smith</option>
                 </select>
               </div>
             </div>
@@ -553,17 +701,6 @@ class LoadEmployeesTable extends React.Component {
                   <input type="file" className="form-control"/>
               </div>
             </div>
-            <div className="form-group row pt-3">
-              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                <input type="button" className="btn btn-danger" value="Archive Employee" />
-              </div>
-              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12">
-                <p>Do you want to archive this employee? By archiving, this employee's data and timesheets
-                    will no longer show up in any reports generated including historical reports. It is
-                    recommended to deactivate the employee.
-                </p>
-              </div>
-            </div> 
       </Modal.Body>
       <Modal.Footer>
       <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">

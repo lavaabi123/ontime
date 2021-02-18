@@ -36,13 +36,11 @@ class PoliciesTabs extends Component {
           <div className="bs-stepper-header">
             <div className="step" data-target="#test-l-1">
               <button className="step-trigger">
-                <span className="bs-stepper-circle">1</span>
                 <span className="bs-stepper-label">Time Clock Rounding</span>
               </button>
             </div>
             <div className="step" data-target="#test-l-2">
               <button className="step-trigger">
-                <span className="bs-stepper-circle">2</span>
                 <span className="bs-stepper-label">Holiday Policies</span>
               </button>
             </div>
