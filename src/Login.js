@@ -3,6 +3,9 @@ import Logo from './components/assets/img/login-logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/assets/css/login.css';
 import 'font-awesome/css/font-awesome.css';
+import {Nav} from 'react-bootstrap';
+import { NavLink} from "react-router-dom";
+
 
 class Login extends React.Component {
   onSubmit = (e) => {      
@@ -33,7 +36,9 @@ class Login extends React.Component {
                   <input type="password" className="form-control" placeholder="Password" />
               </div>
               <p className="small_font float-left px-1"><input type="checkbox" defaultChecked className="form-control w-auto float-left mt-1"/><label className="remember">Remember</label></p>
-              <p className="small_font float-right  px-1"><a href="!#" className="text-decoration-underline blue-color">Forgot Password?</a></p>
+              <Nav.Link as={NavLink} to="/ForgotPassword" className="small_font float-right text-decoration-underline blue-color p-0">
+                Forgot Password?
+              </Nav.Link>
               <input type="submit" className="button w-100 py-2"  value="Login"/>
               </form>
               <p className="xs_font light_color px-2 mt-3 mb-0">By continuing, you're confirming that you've read our <a href="!#" className="text-decoration-underline blue-color">Terms & Conditions</a> and <a href="!#" className="text-decoration-underline blue-color">Cookie Policy</a></p>

@@ -17,7 +17,7 @@ render() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white mr-1" />
                 <Navbar.Collapse id="basic-navbar-nav" className="ml-0">
                     <Nav className="float-left">
-                        <Nav.Link as={NavLink} to="/index">Dashboard</Nav.Link>
+                        <Nav.Link as={NavLink} to="/Dashboard">Dashboard</Nav.Link>
                         <Nav.Link as={NavLink} to="/timesheets">Timesheets</Nav.Link>
                         <Nav.Link as={NavLink} to="/organization">Organization</Nav.Link>
                         <Nav.Link as={NavLink} to="/activities">Activities</Nav.Link>
