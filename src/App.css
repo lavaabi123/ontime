@@ -292,8 +292,14 @@ select.form-control {
 .xl_font{
   font-size: 20.0pt;
 }
+.font-10{
+  font-size: 10.0pt;
+}
 .font-11{
   font-size: 11.0pt;
+}
+.font-16{
+  font-size: 16.0pt;
 }
 .text-black{
   color:#000;
@@ -525,6 +531,50 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
 .dropdown-menu a:focus,.dropdown-menu a:hover{ 
   text-decoration: none;
 }
+.forgot-margin {
+  margin-top: 5rem !important;
+  margin-bottom: 12rem !important;
+}
+.text-green{
+  color: #7DC24B;
+}
+.dash-value{
+  color: #7DC24B;
+  font-weight: 600;
+  font-size: 20px;
+}
+.dash-head{
+  font-weight: 600;
+  font-size: 14px;
+  color: #1a237e;
+  padding-bottom: 1rem;
+}
+.act-text{
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a237e;
+  padding-top: 7px;
+}
+.chart-text{
+  color: #7DC24B;
+  font-size: 16px;
+  font-weight: 600;
+}
+.chart-top{
+  margin-top: .6rem!important;
+}
+.blue-head{
+  background-color: #001399;
+  color:#ffffff;
+}
+.blue-num{
+  color: #1a237e;
+  font-weight:600;
+}
+
+
+
+
 @media (max-width: 767px){
 .bs-stepper-content {
   padding: 0 20px 20px !important;

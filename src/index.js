@@ -11,6 +11,9 @@ import Employees from './Employees';
 import MyProfile from './MyProfile';
 import Timesheets from './Timesheets';
 import Reporting from './Reporting';
+import ForgotPassword from './ForgotPassword';
+import Dashboard from './Dashboard';
+import TimesheetChart from './TimesheetChart.js';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 
@@ -56,6 +59,18 @@ ReactDOM.render(
         <Route  
           path="/reporting"
           render={(props) => <Reporting {...props} />}
+        />
+        <Route  
+          path="/ForgotPassword"
+          render={(props) => <ForgotPassword {...props} />}
+        />
+        <Route  
+          path="/Dashboard"
+          render={(props) => <Dashboard {...props} />}
+        />
+        <Route  
+          path="/TimesheetChart"
+          render={(props) => <TimesheetChart {...props} />}
         />
         <Redirect to="/index" />
         <Redirect from="/" to="/index" />
