@@ -176,7 +176,7 @@ render() {
                       <td colSpan='2' className="text-blue">28.25</td>
                   </tr>
                   <tr>
-                      <td colSpan='1'>CLA</td>
+                      <td colSpan='1' rowSpan='4'>CLA</td>
                       <td colSpan='1'>IN</td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
@@ -188,7 +188,6 @@ render() {
                       <td colSpan='2'></td>
                   </tr>
                   <tr>
-                      <td colSpan='1'>CLA</td>
                       <td colSpan='1'>OUT</td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
@@ -200,7 +199,6 @@ render() {
                       <td colSpan='2'></td>
                   </tr>
                   <tr>
-                      <td colSpan='1'>CLA</td>
                       <td colSpan='1'>IN</td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
@@ -212,7 +210,6 @@ render() {
                       <td colSpan='2'></td>
                   </tr>
                   <tr>
-                      <td colSpan='1'>CLA</td>
                       <td colSpan='1'>OUT</td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
@@ -310,7 +307,13 @@ render() {
                       </Row>
                     </th>
                     <th colSpan='3' className="pt-5">
-                      <span className="pl-1 font-9">Date:</span>
+                      <Row>
+                        <Col lg="6" md="6" sm="6" className="mt-3">
+                          <span className="pl-1 font-9">Date:</span>
+                        </Col>
+                        <Col lg="6" md="6" sm="6">
+                        </Col>
+                      </Row>
                     </th>
                     <th colSpan='5' className="pt-5">
                     <Row>
@@ -328,7 +331,13 @@ render() {
                       </Row>
                     </th>
                     <th colSpan='3' className="pt-5">
-                      <span className="pl-1 font-9">Date:</span>
+                      <Row>
+                        <Col lg="6" md="6" sm="6" className="mt-3">
+                          <span className="pl-1 font-9">Date:</span>
+                        </Col>
+                        <Col lg="6" md="6" sm="6">
+                        </Col>
+                      </Row>
                     </th>
                   </tr>
                 </thead>
