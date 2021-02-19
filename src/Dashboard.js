@@ -17,22 +17,23 @@ render() {
             <AdminHeader />
         </header>
         <div className="content">
-        <div className="contentwrapper pt-3 pb-5 mb-5">
+        <div className="contentwrapper pb-5 mb-5">
             <Row className="mb-4">
                 <Col lg="6" md="6" sm="12" className="p-2">
-                <img alt="Banner"   width="40%"
+                <img alt="Banner" className="float-left"  width="15%"
                         src={require("./components/assets/img/company31.png").default} />
+                <div className="dash-head pl-3 pt-4 float-left">COMPANY ABC, INC.</div>
                 </Col>
-                <Col lg="3" md="3" sm="12" className="mt-2">
+                <Col lg="3" md="3" sm="12" className="mt-4">
                     <select placeholder="Select" className="form-control" name="state">
                         <option>All Activities</option>
-                        <option>Bi-Weekly</option>
+                        <option>Activity 1</option>
                     </select>
                 </Col>
-                <Col lg="3" md="3" sm="12" className="mt-2">
+                <Col lg="3" md="3" sm="12" className="mt-4">
                     <select placeholder="Select" className="form-control" name="state">
                         <option>All Employees</option>
-                        <option>option 1</option>
+                        <option>Employee 1</option>
                     </select>
                 </Col>
             </Row>

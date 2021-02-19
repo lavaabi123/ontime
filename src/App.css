@@ -549,13 +549,13 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
 .dash-head{
   font-weight: 600;
   font-size: 14px;
-  color: #1a237e;
+  color: #024769;
   padding-bottom: 1rem;
 }
 .act-text{
   font-size: 14px;
   font-weight: 600;
-  color: #1a237e;
+  color: #024769;
   padding-top: 7px;
 }
 .chart-text{
@@ -598,6 +598,16 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
   padding: 5px 5px 5px 0px;
 }
 
+.width-95{
+  width :94.5%;
+}
+body.modal-open{
+  overflow-y:scroll !important;
+  padding-right:0 !important;
+}
+body.modal-open .navbar{
+  margin-right:0 !important;
+}
 .guideList .active{
   background-color: #7DC24B;
   color: white;
@@ -613,7 +623,6 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
   border-right: 11px solid transparent;
   border-bottom: 11px solid white;
 }
-
 
 
 @media (max-width: 767px){
