@@ -5,6 +5,7 @@ import './App.css';
 import AdminHeader from './components/AdminHeader.js';
 import Footer from './components/Footer.js';
 import {Row,Col, Card} from "react-bootstrap";
+import { MDBBtn } from 'mdbreact';
 
 class TimesheetChart extends React.Component {  
 render() {
@@ -62,139 +63,276 @@ render() {
                     </thead>
                     <tbody>
                         <tr className="blue-num">
-                            <td>36.5 Hrs</td><td>76.5 Hrs</td>
+                            <td className="font-weight-bold">36.5 Hrs</td>
+                            <td className="font-weight-bold">76.5 Hrs</td>
                         </tr>
                     </tbody>
                 </table>
             </Col>
           </Row>
           <div className="mt-3">
-            <table border='1' className="col-12 text-center text-black">
-                    <thead>
-                        <tr>
-                            <th colSpan='16' className="blue-head py-2">
-                              <span>WEEKLY TIME SHEET</span>
-                              </th>
-                        </tr>
-                        <tr>
-                            <th colSpan='2'>ACTIVITY</th>
-                            <th colSpan='5'>MONTH 1</th>
-                            <th colSpan='6'>MONTH 2</th>
-                            <th colSpan='2'>TOTAL</th>
-                        </tr>
-                        <tr>
-                            <th>ID</th>
-                            <th>NAME</th>
-                            <th>D 1</th>
-                            <th>D 2</th>
-                            <th>D 3</th>
-                            <th>D 4</th>
-                            <th>D 5</th>
-                            <th>D 1</th>
-                            <th>D 2</th>
-                            <th>D 3</th>
-                            <th>D 4</th>
-                            <th>D 5</th>
-                            <th>D 6</th>
-                            <th>REGULAR</th>
-                            <th>OVERTIME</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>938</td><td>OHTA</td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td>934</td><td>BIA</td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td></td><td className="font-weight-bold">SUMMARY</td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th colSpan='5'>MONTH 3</th>
-                            <th colSpan='4'>MONTH 4</th>
-                            <th></th>
-                            <th></th><th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>D 1</th>
-                            <th>D 2</th>
-                            <th>D 3</th>
-                            <th>D 4</th>
-                            <th>D 5</th>
-                            <th>D 1</th>
-                            <th>D 2</th>
-                            <th>D 3</th>
-                            <th>D 4</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <td>938</td><td>OHTA</td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td>934</td><td>BIA</td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td></td><td className="font-weight-bold">SUMMARY</td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <th colSpan='16'>[Group Name] [Group ID] [Activity Name] [Activity ID] EMPLOYEE NAME: [Last Name], [First Name]</th>
-                        </tr>
-                        <tr>
-                            <th colSpan='2'>ACTIVITY</th>
-                            <th colSpan='5'>MONTH 1</th>
-                            <th colSpan='6'>MONTH 2</th>
-                            <th colSpan='2'>TOTAL</th>
-                        </tr>
-                        <tr>
-                            <th>ID</th>
-                            <th>NAME</th>
-                            <th>D 1</th>
-                            <th>D 2</th>
-                            <th>D 3</th>
-                            <th>D 4</th>
-                            <th>D 5</th>
-                            <th>D 1</th>
-                            <th>D 2</th>
-                            <th>D 3</th>
-                            <th>D 4</th>
-                            <th>D 5</th>
-                            <th>D 6</th>
-                            <th>REGULAR</th>
-                            <th>OVERTIME</th>
-                        </tr>
-                        <tr>
-                            <td>938</td><td>OHTA</td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                        <tr>
-                            <td>934</td><td>BIA</td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td>
-                            <td></td><td></td><td></td><td></td><td></td><td></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table border='1' className="col-12 text-black">
+                <thead>
+                    <tr>
+                        <th colSpan='17' className="blue-head py-2">
+                          <Row>
+                            <Col lg="6" md="6" sm="12">
+                              <div className="pl-2 float-left">
+                                <span className="font-16">WEEKLY TIME SHEET</span>
+                                <span className="small-font pl-2">April-24, 2020 - April-30, 2020</span>
+                              </div>
+                            </Col>
+                            <Col lg="6" md="6" sm="12">
+                              <div className="pr-2 pt-2 float-right">
+                                <span className="pr-2 font-16">Active</span>
+                                <span className="font-small">Due on : April 29, 2020</span>
+                                <span className="px-1">|</span>
+                                <i className="fa fa-print px-1"></i>
+                                <i className="fa fa-file-pdf-o px-1"></i>
+                              </div>
+                            </Col>
+                          </Row>
+                        </th>
+                    </tr>
+                    <tr>
+                      <th colSpan='2' className="font-weight-bold text-right pr-1">NAME:</th>
+                      <th colSpan='15' className="pl-1">ALLEN, JOE</th>
+                    </tr>
+                    <tr>
+                      <th colSpan='2' className="font-weight-bold text-right pr-1">BRANCH:</th>
+                      <th colSpan='15' className="pl-1">MIAMI, FL (345)</th>
+                    </tr>
+                    <tr>
+                      <th colSpan='2' className="font-weight-bold text-right pr-1">GROUP:</th>
+                      <th colSpan='15' className="pl-1">GROUP NAME OR ID</th>
+                    </tr>
+                    <tr className="text-center font-small p-1 bg-lite-gray">
+                        <th colSpan='2'></th>
+                        <th colSpan='2'>Sun<br />Apr 24, 2020</th>
+                        <th colSpan='2'>Mon<br />Apr 25, 2020</th>
+                        <th colSpan='2'>Tue<br />Apr 26, 2020</th>
+                        <th colSpan='2'>Wed<br />Apr 27, 2020</th>
+                        <th colSpan='2'>Thu<br />Apr 28, 2020</th>
+                        <th colSpan='2'>Fri<br />Apr 29, 2020</th>
+                        <th colSpan='2'>Sat<br />Apr 30, 2020</th>
+                        <th colSpan='2'>Total<br />Hours</th>
+                    </tr>
+                </thead>
+                <tbody className="text-center">
+                  <tr>
+                      <td colSpan='1' rowSpan='4'>OTHA</td>
+                      <td colSpan='1'>IN</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>7:58 AM</td>
+                      <td colSpan='2'>8:00 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>7:58 AM</td>
+                      <td colSpan='2'>7:45 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                  </tr>
+                  <tr>
+                      <td colSpan='1'>OUT</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>7:58 AM</td>
+                      <td colSpan='2'>8:00 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>7:58 AM</td>
+                      <td colSpan='2'>7:45 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                  </tr>
+                  <tr>
+                      <td colSpan='1'>IN</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>7:58 AM</td>
+                      <td colSpan='2'>8:00 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>7:58 AM</td>
+                      <td colSpan='2'>7:45 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                  </tr>
+                  <tr>
+                      <td colSpan='1'>OUT</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>7:58 AM</td>
+                      <td colSpan='2'>8:00 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>7:58 AM</td>
+                      <td colSpan='2'>7:45 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                  </tr>
+                  <tr className="time-td blue-text bg-lite-gray">
+                      <td colSpan='2'>OTHA HOURS</td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue">8-00</td>
+                      <td colSpan='2' className="text-blue">8:00 AM</td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue">8.00</td>
+                      <td colSpan='2' className="text-blue">4.25</td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue">28.25</td>
+                  </tr>
+                  <tr>
+                      <td colSpan='1'>CLA</td>
+                      <td colSpan='1'>IN</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>8:00 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                  </tr>
+                  <tr>
+                      <td colSpan='1'>CLA</td>
+                      <td colSpan='1'>OUT</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>8:00 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                  </tr>
+                  <tr>
+                      <td colSpan='1'>CLA</td>
+                      <td colSpan='1'>IN</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>8:00 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                  </tr>
+                  <tr>
+                      <td colSpan='1'>CLA</td>
+                      <td colSpan='1'>OUT</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'>8:00 AM</td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                      <td colSpan='2'></td>
+                  </tr>
+                  <tr className="time-td blue-text bg-lite-gray">
+                      <td colSpan='2'>CLA HOURS</td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue">8.00</td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue">8:00</td>
+                  </tr>
+                  <tr className="time-td blue-text">
+                      <td colSpan='2'>HOLIDAY</td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                  </tr>
+                  <tr className="time-td blue-text">
+                      <td colSpan='2'>PTO</td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue">
+                        <MDBBtn size="sm" className="radius-50 mr-1" color="primary">
+                          1
+                        </MDBBtn>
+                        <span>0.25</span>
+                      </td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue">0.25</td>
+                  </tr>
+                  <tr className="time-td blue-text bg-lite-gray">
+                      <td colSpan='2'>TOTAL</td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue"></td>
+                      <td colSpan='2' className="text-blue">36.25</td>
+                  </tr>
+                </tbody>
+                <thead>
+                  <tr>
+                    <th colSpan='17' className="blue-head text-center py-2">
+                      Timesheet Changes
+                    </th>
+                  </tr>
+                  <tr>
+                    <th colSpan='17' className="py-2">
+                      <span className="pl-1">
+                      <MDBBtn size="sm" className="radius-50 mr-1" color="primary">
+                        1
+                      </MDBBtn>
+                        Paid time off (PTO) Monday(Apr 24, 2020): PTO Added - Changes ,ade by John Manager
+                        on 01:58 PM Apr 26, 2020 ___ | ___.
+                      </span>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th colSpan='17' className="py-2"></th>
+                  </tr>
+                  <tr>
+                    <th colSpan='6' className="pt-5">
+                      <Row>
+                        <Col lg="6" md="6" sm="6" className="mt-3">
+                          <span className="pl-1 font-9">Employee Signature:</span>
+                        </Col>
+                        <Col lg="6" md="6" sm="6">
+                          <div className="float-right">
+                            <div className="guideList">
+                                <div className="active"><span className="activePointer"></span>
+                                <span className="pl-4">SIGN</span></div>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </th>
+                    <th colSpan='3' className="pt-5">
+                      <span className="pl-1 font-9">Date:</span>
+                    </th>
+                    <th colSpan='5' className="pt-5">
+                    <Row>
+                        <Col lg="6" md="6" sm="6" className="mt-3">
+                          <span className="pl-1 font-9">Approval Signature:</span>
+                        </Col>
+                        <Col lg="6" md="6" sm="6">
+                          <div className="float-right">
+                            <div className="guideList">
+                                <div className="active"><span className="activePointer"></span>
+                                <span className="pl-4">SIGN</span></div>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </th>
+                    <th colSpan='3' className="pt-5">
+                      <span className="pl-1 font-9">Date:</span>
+                    </th>
+                  </tr>
+                </thead>
+            </table>
           </div>
         </div>
         </div>
