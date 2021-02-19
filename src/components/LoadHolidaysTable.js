@@ -163,7 +163,7 @@ class LoadHolidaysTable extends React.Component {
       </div>
       <MDBDataTable hover info={false}  responsive={true} displayEntries={false} noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} searchTop searchBottom={false} />
      
-    <Modal size="sm"
+    <Modal  scrollable={true} size="sm"
           show={this.state.holidayshow}
            aria-labelledby="contained-modal-title-vcenter">
       <Modal.Header>
@@ -190,7 +190,7 @@ class LoadHolidaysTable extends React.Component {
       </ul>
       </Modal.Footer>
     </Modal>
-      <Modal  size="lg"  onHide={() => this.setState({ show: false })} 
+      <Modal  scrollable={true} size="lg"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton>
         <Modal.Title className="h6" id="contained-modal-title-vcenter">
@@ -226,7 +226,7 @@ class LoadHolidaysTable extends React.Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal  size="lg" onHide={() => this.setState({ editshow: false })} 
+    <Modal  scrollable={true} size="lg" onHide={() => this.setState({ editshow: false })} 
           show={this.state.editshow}>
       <Modal.Header closeButton>
         <Modal.Title className="h6" id="contained-modal-title-vcenter">

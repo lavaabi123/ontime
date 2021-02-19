@@ -6,6 +6,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import "@fortawesome/fontawesome-free/css/all.min.css"; */
 import '../App.css';
 import {Modal} from "react-bootstrap";
+import DualListBox from 'react-dual-listbox';
+import 'react-dual-listbox/lib/react-dual-listbox.css';
+
 
 class LoadEmployeesTable extends React.Component {
   constructor(props) {
@@ -22,8 +25,19 @@ class LoadEmployeesTable extends React.Component {
       isChecked: false,
       holidaypolicy:true,
       rounding:false,
+      selected: ['one'],
+      options : [
+        { value: 'one', label: 'Option One' },
+        { value: 'two', label: 'Option Two' },
+      ]
     };
   } 
+  onChange = (selected) => {
+    this.setState({ selected });
+  };
+  onAdd = (options) => {
+    this.setState({ options });
+  };
   handleChange = (date) => {
     this.setState({
       startDate: date
@@ -92,6 +106,7 @@ class LoadEmployeesTable extends React.Component {
   );
 
   render() {
+  
   let datatable = {
     columns: [
       {
@@ -183,7 +198,7 @@ class LoadEmployeesTable extends React.Component {
   return (
     <div>
       
-      <div className="form-group row small_font">
+      <div className="form-group row small_font">      
         <div className="col-xl-2 col-lg-2 col-md-2 col-sm-12">
           <label>Group</label>
           <select className="form-control">
@@ -215,7 +230,7 @@ class LoadEmployeesTable extends React.Component {
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0"><i class="fa fa-plus pr-2"></i>Add Employees</button>
       </div>
       <MDBDataTable hover info={false}  responsive={true} displayEntries={false} noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} searching={false} />
-      <Modal  size="lg"  onHide={() => this.setState({ show: false })} 
+      <Modal  scrollable={true} size="lg"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton>
         <Modal.Title className="h6" id="contained-modal-title-vcenter">
@@ -412,13 +427,25 @@ class LoadEmployeesTable extends React.Component {
                 </div>
             </div>
             <div className="form-group row">
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <label className="mr-2">Activities</label>
-                    <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
-                        <option>Activity 1</option>
-                        <option>Activity 2</option>
-                    </select>
+                <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                    <label className="mr-2">Activities - </label>
+                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
+                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
+                    <DualListBox
+                        options={this.state.options}
+                        selected={this.state.selected}
+                        onChange={this.onChange} className="mt-2" icons={{
+                          moveLeft: '<',
+                          moveAllLeft: '<<',
+                          moveRight: '>',
+                          moveAllRight: '>>'
+                      }}
+                    />
                 </div>
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 m-auto">
+                </div>
+            </div>
+            <div className="form-group row border-bottom pb-3">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label className="mr-2">Assigned Group</label>
                     <select placeholder="Select" className="form-control" name="approver">
@@ -434,8 +461,6 @@ class LoadEmployeesTable extends React.Component {
                     <option>YES</option>
                 </select>
               </div>
-            </div>
-            <div className="form-group row border-bottom pb-3">
               <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <label>Timesheet Approver*</label>
                 <select placeholder="Select" className="form-control" name="activity_status">
@@ -462,7 +487,7 @@ class LoadEmployeesTable extends React.Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal  size="lg" onHide={() => this.setState({ editshow: false })} 
+    <Modal  scrollable={true} size="lg" onHide={() => this.setState({ editshow: false })} 
           show={this.state.editshow}>
       <Modal.Header closeButton>
         <Modal.Title className="h6" id="contained-modal-title-vcenter">
@@ -659,13 +684,25 @@ class LoadEmployeesTable extends React.Component {
                 </div>
             </div>
             <div className="form-group row">
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                    <label className="mr-2">Activities</label>
-                    <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
-                        <option>Activity 1</option>
-                        <option>Activity 2</option>
-                    </select>
+                <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                    <label className="mr-2">Activities - </label>
+                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
+                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
+                    <DualListBox
+                        options={this.state.options}
+                        selected={this.state.selected}
+                        onChange={this.onChange} className="mt-2" icons={{
+                          moveLeft: '<',
+                          moveAllLeft: '<<',
+                          moveRight: '>',
+                          moveAllRight: '>>'
+                      }}
+                    />
                 </div>
+                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 m-auto">
+                </div>
+            </div>
+            <div className="form-group row border-bottom pb-3">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label className="mr-2">Assigned Group</label>
                     <select placeholder="Select" className="form-control" name="approver">
@@ -681,8 +718,6 @@ class LoadEmployeesTable extends React.Component {
                     <option>YES</option>
                 </select>
               </div>
-            </div>
-            <div className="form-group row border-bottom pb-3">
               <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <label>Timesheet Approver*</label>
                 <select placeholder="Select" className="form-control" name="activity_status">

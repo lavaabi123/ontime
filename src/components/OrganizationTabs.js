@@ -345,7 +345,7 @@ class OrganizationTabs extends Component {
                 </div>
               </div>
             </form>
-            <Modal size="lg" onHide={() => this.setState({ supershow: false })}
+            <Modal scrollable={true} size="lg" onHide={() => this.setState({ supershow: false })}
           show={this.state.supershow}
            aria-labelledby="example-modal-sizes-title-lg">
       <Modal.Header closeButton>
@@ -393,7 +393,7 @@ class OrganizationTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal size="lg"  onHide={() => this.setState({ editsupershow: false })}
+    <Modal scrollable={true} size="lg"  onHide={() => this.setState({ editsupershow: false })}
           show={this.state.editsupershow}
            aria-labelledby="example-modal-sizes-title-lg">
       <Modal.Header closeButton>
@@ -436,7 +436,7 @@ class OrganizationTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal size="xl"  onHide={() => this.setState({ show: false })}
+    <Modal scrollable={true} size="xl"  onHide={() => this.setState({ show: false })}
           show={this.state.show}
            aria-labelledby="example-modal-sizes-title-lg">
       <Modal.Header closeButton>
@@ -495,7 +495,7 @@ class OrganizationTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal size="xl"  onHide={() => this.setState({ editshow: false })}
+    <Modal scrollable={true} size="xl"  onHide={() => this.setState({ editshow: false })}
           show={this.state.editshow}
            aria-labelledby="example-modal-sizes-title-lg">
       <Modal.Header closeButton>
@@ -550,7 +550,7 @@ class OrganizationTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal size="md"  onHide={() => this.setState({ superreset: false })}
+    <Modal scrollable={true} size="md"  onHide={() => this.setState({ superreset: false })}
           show={this.state.superreset}
            aria-labelledby="example-modal-sizes-title-lg">
       <Modal.Header closeButton>
@@ -577,7 +577,7 @@ class OrganizationTabs extends Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal size="md"  onHide={() => this.setState({ reset: false })}
+    <Modal scrollable={true} size="md"  onHide={() => this.setState({ reset: false })}
           show={this.state.reset}
            aria-labelledby="example-modal-sizes-title-lg">
       <Modal.Header closeButton>

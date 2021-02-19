@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import "@fortawesome/fontawesome-free/css/all.min.css"; */
 import '../App.css';
 import {Modal,} from "react-bootstrap";
+import DualListBox from 'react-dual-listbox';
+import 'react-dual-listbox/lib/react-dual-listbox.css';
 
 class LoadEmployeesGroupTable extends React.Component {
   constructor(props) {
@@ -21,8 +23,24 @@ class LoadEmployeesGroupTable extends React.Component {
       isChecked: false,
       holidaypolicy:true,
       rounding:false,
+      selected: ['one'],
+      options : [
+        { value: 'one', label: 'Activity 1' },
+        { value: 'two', label: 'Activity 2' },
+      ],
+      empselected: ['two'],
+      empoptions : [
+        { value: 'one', label: 'Employee 1' },
+        { value: 'two', label: 'Employee 2' },
+      ]
     };
   } 
+  onChange = (selected) => {
+    this.setState({ selected });
+  };
+  onChangeEmp = (empselected) => {
+    this.setState({ empselected });
+  };
   handleChange = (date) => {
     this.setState({
       startDate: date
@@ -151,7 +169,7 @@ class LoadEmployeesGroupTable extends React.Component {
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-3 col-xl-3 col-md-3 col-sm-12 m-0"><i class="fa fa-plus pr-2"></i>Add Employee Group</button>
       </div>
       <MDBDataTable hover info={false}  responsive={true} displayEntries={false} noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} searching={false} />
-      <Modal  size="lg"  onHide={() => this.setState({ show: false })} 
+      <Modal scrollable={true} size="lg"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton>
         <Modal.Title className="h6" id="contained-modal-title-vcenter">
@@ -171,20 +189,38 @@ class LoadEmployeesGroupTable extends React.Component {
             </div>
             <div className="form-group row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label className="mr-2">Employees </label>
-                    <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
-                        <option>Joe Smith</option>
-                        <option>Jesse Lake</option>
-                    </select>
+                    <label className="mr-2">Employees - </label>
+                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
+                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
+                    
+                    <DualListBox
+                        options={this.state.empoptions}
+                        selected={this.state.empselected}
+                        onChange={this.onChangeEmp} className="mt-2" icons={{
+                          moveLeft: '<',
+                          moveAllLeft: '<<',
+                          moveRight: '>',
+                          moveAllRight: '>>'
+                      }}
+                    />
                 </div>
             </div>
             <div className="form-group row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label className="mr-2">Activities </label>
-                    <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
-                        <option>Activities 1</option>
-                        <option>Activities 2</option>
-                    </select>
+                    <label className="mr-2">Activities - </label>
+                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
+                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
+                    
+                    <DualListBox
+                        options={this.state.options}
+                        selected={this.state.selected}
+                        onChange={this.onChange} className="mt-2" icons={{
+                          moveLeft: '<',
+                          moveAllLeft: '<<',
+                          moveRight: '>',
+                          moveAllRight: '>>'
+                      }}
+                    />
                 </div>
             </div>  
       </Modal.Body>
@@ -195,7 +231,7 @@ class LoadEmployeesGroupTable extends React.Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal  size="lg" onHide={() => this.setState({ editshow: false })} 
+    <Modal  scrollable={true} size="lg" onHide={() => this.setState({ editshow: false })} 
           show={this.state.editshow}>
       <Modal.Header closeButton>
         <Modal.Title className="h6" id="contained-modal-title-vcenter">
@@ -215,22 +251,40 @@ class LoadEmployeesGroupTable extends React.Component {
             </div>
             <div className="form-group row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label className="mr-2">Employees </label>
-                    <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
-                        <option>Joe Smith</option>
-                        <option>Jesse Lake</option>
-                    </select>
+                    <label className="mr-2">Employees - </label>
+                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
+                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
+                    
+                    <DualListBox
+                        options={this.state.empoptions}
+                        selected={this.state.empselected}
+                        onChange={this.onChangeEmp} className="mt-2" icons={{
+                          moveLeft: '<',
+                          moveAllLeft: '<<',
+                          moveRight: '>',
+                          moveAllRight: '>>'
+                      }}
+                    />
                 </div>
             </div>
             <div className="form-group row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label className="mr-2">Activities </label>
-                    <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
-                        <option>Activities 1</option>
-                        <option>Activities 2</option>
-                    </select>
+                    <label className="mr-2">Activities - </label>
+                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
+                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
+                    
+                    <DualListBox
+                        options={this.state.options}
+                        selected={this.state.selected}
+                        onChange={this.onChange} className="mt-2" icons={{
+                          moveLeft: '<',
+                          moveAllLeft: '<<',
+                          moveRight: '>',
+                          moveAllRight: '>>'
+                      }}
+                    />
                 </div>
-            </div> 
+            </div>  
       </Modal.Body>
       <Modal.Footer>
       <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">

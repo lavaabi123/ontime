@@ -5,21 +5,20 @@ import { MDBContainer } from 'mdbreact';
 class DashboardGraph extends React.Component {
   state = {
     dataHorizontal: {
-      labels: ['option 1', 'option 2','OTHA', 'CLA'],
+      labels: ['OTHA', 'CLA'],
       datasets: [
         {
           label: 'Total Hours',
-          data: [22, 33, 55, 12],
-          fill: false,
+          data: [1,2],
+          fill: true,
           backgroundColor: [
-            'yellow',
-            'blue'
+            '#FDCA2E',
+            '#699CFC'
           ],
           borderColor: [
-            'yellow',
-            'blue'
+            '#FDCA2E',
+            '#699CFC'
           ],
-          borderWidth: 1
         }
       ]
     }
@@ -27,12 +26,63 @@ class DashboardGraph extends React.Component {
 
   render() {
     return (
-      <MDBContainer>
-        <HorizontalBar
+      <div class="width-95 ml-auto">
+        <HorizontalBar width={100}
+          height={15}
           data={this.state.dataHorizontal}
-          options={{ responsive: true }}
+            options={{
+              legend: {
+                display: false,
+              }, 
+              responsive: true, 
+              scales: {
+                xAxes: [{
+                  
+                  ticks: {
+                    drawTicks: false,padding:5,fontColor:'#000',
+                    max: 12,
+                    min: 0,
+                    stepSize: 1
+                  },
+                    gridLines: {
+                      drawBorder: true,drawOnChartArea:false,drawTicks: false
+                    },
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Hours',fontColor:'#000',
+                    }
+                },{
+                  position: 'top',
+                  ticks: {
+                    display: false
+                },
+                gridLines: {
+                    drawBorder: true,
+                    drawTicks: false
+                }
+                }],
+                yAxes: [{
+                  
+                  ticks: {
+                    drawTicks: false,padding:5,fontColor:'#000',
+                  },
+                    gridLines: {
+                      drawBorder: true,drawOnChartArea:false,drawTicks: false
+                    }
+                },{
+                  position: 'right',
+                  ticks: {
+                    display: false
+                },
+                gridLines: {
+                    display: false,drawBorder: true,
+                    drawTicks: false
+                }
+                }]
+              } 
+            }}
         />
-      </MDBContainer>
+      </div>
     );
   }
 }
