@@ -9,7 +9,7 @@ import { NavLink} from "react-router-dom";
 
 class Login extends React.Component {
   onSubmit = (e) => {      
-      this.props.history.push("/organization");
+      this.props.history.push("/ManagerOrganization");
   }
 	render() {
   return (
