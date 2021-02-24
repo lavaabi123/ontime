@@ -313,14 +313,23 @@ select.form-control {
 .background-blue {
   background-color: #89c2de !important;
 }
+.background-blue1 {
+  background-color: #21BEDE !important;
+}
 .background-green {
   background-color: #33ea31 !important;
+}
+.background-green1 {
+  background-color: #7DC24B !important;
 }
 .background-orange {
   background-color: #efbe52 !important;
 }
 .background-red {
   background-color: #ec4848 !important;
+}
+.timesheetpopover{
+  width: 30rem;
 }
 .width-70{
   width: 72%;
@@ -442,6 +451,44 @@ table td {
 .table th {
   border-top: none !important;
   border-bottom: none !important;
+}
+.timesheets thead {
+  background-color: #024769;
+  color: #fff;
+}
+.timesheets1 thead {
+  background-color: #024769;
+  color: #fff;
+}
+.timesheets th {
+  font-size: 9pt !important;
+  vertical-align: middle !important;
+  border-bottom: 1px solid #fff !important;
+}
+.timesheets1 th {
+  font-size: 9pt !important;
+  vertical-align: middle !important;
+  border-bottom: 1px solid #fff !important;
+}
+.timesheets th:nth-child(2),
+.timesheets tbody tr td:nth-child(2) {
+  width: 9em;
+}
+.timesheets th:nth-child(3),
+.timesheets tbody tr td:nth-child(3) {
+  width: 10em;
+}
+.timesheets tbody tr:nth-child(1) td:nth-child(6){
+  background-color: #f33131;
+}
+.timesheets tbody tr:nth-child(3) td:nth-child(6){
+  background-color: #FDCA2E;
+}
+.timesheets{
+  text-align: center;
+}
+.timesheets td{
+  padding: 0.4rem;
 }
 .pagination .page-item.active .page-link{
   background-color: #7DC24B !important;
@@ -567,12 +614,17 @@ table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, tab
   margin-top: .6rem!important;
 }
 .blue-head{
-  background-color: #001399;
+  background-color: #024769;
   color:#ffffff;
 }
 .blue-num{
   color: #1a237e;
   font-weight:600;
+}
+.btn-primary1{
+  background-color: #21BEDE;
+  border-color: #21BEDE;width: 1.3rem;
+  height: 1.3rem;padding:0;color:#fff;
 }
 .time-td td{
   font-weight:600;

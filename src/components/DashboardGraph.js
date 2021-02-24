@@ -61,8 +61,7 @@ class DashboardGraph extends React.Component {
                     drawTicks: false
                 }
                 }],
-                yAxes: [{
-                  
+                yAxes: [{                  
                   ticks: {
                     drawTicks: false,padding:5,fontColor:'#000',
                   },

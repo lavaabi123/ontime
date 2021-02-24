@@ -23,6 +23,8 @@ class LoadTimesheetsTable extends React.Component {
       isChecked: false,
       holidaypolicy:true,
       rounding:false,
+      approvedcount:false,
+      archivedcount:false
     };
   } 
   handleChange = (date) => {
@@ -109,6 +111,7 @@ class LoadTimesheetsTable extends React.Component {
       {
         label: 'Week Start',
         field: 'start',
+        width: '10%',
       },
       {
         label: 'Status',
@@ -128,14 +131,18 @@ class LoadTimesheetsTable extends React.Component {
       },
       {
         label: 'Overtime Hours',
-        field: 'overtima',
+        field: 'overtime',
+      },
+      {
+        label: 'Max OT Allowed',
+        field: 'maxot',
       },
       {
         label: 'Regular Hours <=40',
         field: 'regular',
       },
       {
-        label: 'OHTA Hours',
+        label: <span>OHTA Hours<i class="fa fa-clock-o ml-1 text-danger"></i></span>,
         field: 'ohta',
       },
       {
@@ -150,42 +157,52 @@ class LoadTimesheetsTable extends React.Component {
         label: 'PTO Hours',
         field: 'pto',
       },
-      {
-        label: 'Action',
-        field: 'action',
-        sort: 'disabled',
-      },
     ],
     rows: [
       {
         check: <input type="checkbox" />,
-        start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0">4/24/2020</Nav.Link>,
-        status: 'Not Summited',
+        start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><i class="fa fa-clock-o mr-1 text-danger"></i>4/24/2020</Nav.Link>,
+        status: 'Active',
         last_name: 'Allen',
         first_name: 'Joe',
         total: '36.25',
         overtime: '0.00',
+        maxot: '0.00',
         regular: '36.25',
         ohta: '28.25',
         cla: '7.75',
         holiday: '0.00',
         pto: '0.25',
-        action: <i class="fa fa-edit" onClick={() => this.setState({ editshow: true })}></i>,
       },
       {
         check: <input type="checkbox" />,
-        start: '4/24/2020',
-        status: 'Not Summited',
+        start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><span className="ml-3">4/24/2020</span></Nav.Link>,
+        status: 'Active',
         last_name: 'Allen',
         first_name: 'Joe',
         total: '36.25',
-        overtime: '0.00',
+        overtime: 'N/A',
+        maxot: '0.00',
         regular: '36.25',
         ohta: '28.25',
         cla: '7.75',
         holiday: '0.00',
         pto: '0.25',
-        action: <i class="fa fa-edit" onClick={() => this.setState({ editshow: true })}></i>,
+      },
+      {
+        check: <input type="checkbox" />,
+        start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><i class="fa fa-exclamation-triangle mr-1 text-warning"></i>4/24/2020</Nav.Link>,
+        status: 'Not Submitted',
+        last_name: 'Allen',
+        first_name: 'Joe',
+        total: '36.25',
+        overtime: '0.00',
+        maxot: '0.00',
+        regular: '36.25',
+        ohta: '28.25',
+        cla: '7.75',
+        holiday: '0.00',
+        pto: '0.25',
       },
     ],
   }
@@ -230,246 +247,138 @@ class LoadTimesheetsTable extends React.Component {
         </div>
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
       </div>
-      <MDBDataTable hover info={false} className="activitytable"  responsive={true} displayEntries={false} 
+      <MDBDataTable bordered hover info={false} className="activitytable timesheets"  responsive={true} displayEntries={false} 
       noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} 
       data={datatable} searching={false} />
-      <Modal  scrollable={true} size="lg"  onHide={() => this.setState({ show: false })} 
+
+      <h5>Change Approved Timesheets into Archivable</h5>
+      <div class="col-12 row mt-4">
+      <div class="col-lg-5 col-md-5 col-xl-5 col-sm-12 pl-0">
+      <DatePicker  className="form-control" placeholderText="Start Date"
+          selected={this.state.startDate}
+          onChange={date => this.setState({startDate: date})}
+          selectsStart
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+      />
+      <DatePicker  className="form-control ml-2" placeholderText="End Date"
+          selected={this.state.endDate}
+          onChange={date => this.setState({endDate: date})}
+          selectsEnd
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          minDate={this.state.startDate}
+      />
+      </div>
+      <button onClick={() => this.setState({ approvedcount: true })} class="button resend-btn py-2 px-4 ml-0 mt-0 mr-1">Get Timesheet Count</button>
+      <button onClick={() => this.setState({ approvedcount: false })} class="button cancel-btn py-2 px-4 ml-0 mt-0">Clear</button>
+      </div>
+      <div class="col-12 row mt-4" style={this.state.approvedcount === true ? {} : { display: 'none' }}>
+        <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12 pl-0 pr-0">
+          <table class="table table-bordered table-hover dataTable timesheets1">
+            <thead data-test="datatable-head">
+              <tr>
+              <th class="sorting">Approved Timesheet Count</th>
+              <th class="sorting">50</th>
+              <th><button onClick={() => this.setState({ show: false })} class="button resend-btn py-2 px-4 ml-5 mt-0">Move to Archivable</button>
+        </th>
+              </tr>
+              <tr>
+              <th class="sorting">Not Approved Timesheet Count</th>
+              <th class="sorting">5</th>
+              <th></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      
+      <h5 className="mt-5">Change Archivable Timesheets into Archived</h5>
+      <div class="col-12 row mt-4">
+      <div class="col-lg-5 col-md-5 col-xl-5 col-sm-12 pl-0">
+      <DatePicker  className="form-control" placeholderText="Start Date"
+          selected={this.state.startDate}
+          onChange={date => this.setState({startDate: date})}
+          selectsStart
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+      />
+      <DatePicker  className="form-control ml-2" placeholderText="End Date"
+          selected={this.state.endDate}
+          onChange={date => this.setState({endDate: date})}
+          selectsEnd
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          minDate={this.state.startDate}
+      />
+      </div>
+      <button onClick={() => this.setState({ archivedcount: true })} class="button resend-btn py-2 px-4 ml-0 mr-1 mt-0">Get Timesheet Count</button>
+      <button onClick={() => this.setState({ archivedcount: false })} class="button cancel-btn py-2 px-4 ml-0 mt-0">Clear</button>
+      </div>
+      <div class="col-12 row mt-4" style={this.state.archivedcount === true ? {} : { display: 'none' }}>
+        <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12 pl-0 pr-0">
+          <table class="table table-bordered table-hover dataTable timesheets1">
+            <thead data-test="datatable-head">
+              <tr>
+              <th class="sorting">Archivable Timesheet Count</th>
+              <th class="sorting">15</th>
+              <th><button onClick={() => this.setState({ show: false })} class="button resend-btn py-2 px-4 ml-5 mt-0">Move to Archived</button>
+              </th>
+              </tr>
+              <tr>
+              <th class="sorting">Not Archivable Timesheet Count</th>
+              <th class="sorting">25</th>
+              <th></th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+      <Modal  scrollable={true} size="md"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
-      <Modal.Header closeButton>
-        <Modal.Title className="h6" id="contained-modal-title-vcenter">
-        Add Activity
+      <Modal.Header closeButton className="h6 background-blue1">
+        <Modal.Title className="h6 text-white" id="contained-modal-title-vcenter">
+        Mass Time Entry
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="show-grid small_font px-5">
-          <div className="form-group">
-              <label for="exampleInputEmail1">Activity Name*</label>
-              <input type="text" className="form-control" placeholder="Activity Name" />
-            </div>
-            <div className="form-group">
-              <label for="exampleInputEmail1">Activity Description</label>
-              <textarea type="email" className="form-control" placeholder="Enter Activity Description"></textarea>
-            </div>
-            <div className="form-group row">
-              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <label>Activity ID*</label>
-                <input type="text" className="form-control" placeholder="Enter Activity ID" />
-              </div>
-              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <label>Activity Type*</label>
-                <select onChange={this.toggleChangePolicy} placeholder="Select" className="form-control" name="activity_type">
-                    <option value="Duty">Duty</option>
-                    <option value="PTO">PTO</option>
-                    <option value="Holiday">Holiday</option>
-                    <option value="GA">G&A</option>
-                    <option value="OH">OH</option>
-                    <option value="LWOP">LWOP</option>
-                    <option value="Extra Mile">Extra Mile</option>
-                    <option value="Other">Other</option>
-                </select>
-              </div>
-              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <label>Activity Status*</label>
-                <select placeholder="Select" className="form-control" name="activity_status">
-                    <option>Inactive</option>
-                    <option>Active</option>
-                </select>
-              </div>
-            </div>
-            <div className="form-group row">
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="mr-2">Activity Time Approver* 
-                <MDBTooltip domElement tag="span" placement="top">
-                <span className="ml-2">
-                <i class="fa fa-question-circle" aria-hidden="true"></i></span>
-                <span>Not seeing your activity time approver? Go to Employees to set up the approver</span></MDBTooltip></label>
-                <select placeholder="Select" className="form-control" name="approver">
-                    <option>Select</option>
-                    <option>Joe Smith</option>
-                    <option>Jesse Lake</option>
-                </select>
-                </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                  <label>TimeClock Rounding Policy</label>
-                  <select disabled={this.state.rounding} placeholder="Select" className="form-control" name="approver">
-                      <option>N/A</option>
-                  </select>
-                </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                  <label>Holiday Policy</label>
-                  <select disabled={this.state.holidaypolicy} placeholder="Select" className="form-control" name="approver">
-                      <option>Standard</option>
-                  </select>
-                </div>
-            </div> 
-            <div className="form-group">
-              <label>Setup for Allowance of Extra Hours</label>
-              </div>
-              <div className="form-group row">
-              <label className="pr-2 float-left col-2" style={{marginTop:'-4px'}}>Allowed</label>
-              <input type="checkbox" defaultChecked={this.state.isChecked}
-          onChange={this.toggleChange} value="1" className="form-control" style={{width:'3%'}} name="country"/>                  
-            </div>
-              <div className="form-group row">
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="pr-2">Start Week</label>
-              <DatePicker selected={ this.state.startDate }
-          name="startDate" className="form-control" customInput={<this.ExampleCustomInput />} 
-          filterDate={this.isWeekday} onChange={ this.handleChange } className="form-control" 
-          dateFormat="MM/dd/yyyy"/>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="pr-2">End Week</label>
-              <DatePicker selected={ this.state.startDate1 }
-          name="startDate" className="form-control" customInput={<this.ExampleCustomInput1 />} 
-          filterDate={this.isWeekday1} onChange={ this.handleChange1 } className="form-control" 
-          dateFormat="MM/dd/yyyy"/>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="pr-2">Max Hours</label>
-              <DatePicker selected={ this.state.startDate2 }
-          name="startDate" className="form-control" customInput={<this.ExampleCustomInput2 />} 
-           onChange={ this.handleChange2 } showTimeSelect
-           showTimeSelectOnly
-           timeIntervals={15}
-           timeCaption="Time"
-           dateFormat="h:mm aa" className="form-control" dateFormat="MM/dd/yyyy"/>
-            </div>
-            </div>
-            <div className="form-group row pt-3">
-              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                <input type="button" className="btn btn-danger" value="Delete Activity" />
-              </div>
-              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12">
-                <p>Do you want to permanently delete this activity? This cannot be undone and you will 
-                  lose all data for this activity. It is recommended that you inactive the activity.</p>
-              </div>
-            </div>  
-      </Modal.Body>
+        <p className="xs_font text-dark text-center">Add a punch or time entry for the 4 selected employees for the week of:</p>
+        <p className="small_font font-weight-bold text-center">Sun Apr 24, 2016 - Mon Apr 25, 2016</p>
+        <div className="form-group row">
+          <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12">
+            <label for="exampleInputEmail1">Date:</label>
+            <input type="date" className="form-control" placeholder="04/24/2016" />
+          </div>
+          <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12">
+            <label for="exampleInputEmail1">Activity Name:</label>
+            <select className="form-control">
+              <option>OHTA</option>
+              <option>Type 1</option>
+            </select>
+          </div>
+        </div>
+        <div className="form-group row">
+          <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12">
+            <label for="exampleInputEmail1">Time:</label>
+            <input type="text" className="form-control" placeholder="" />
+          </div>
+          <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12">
+            <label for="exampleInputEmail1">Comments*:</label>
+            <textarea type="email" className="form-control" placeholder="Enter Activity Description"></textarea>
+        
+          </div>           
+        </div>
+          <p className="small_font text-center">If there is support document, please<span className="pl-1 link-style text-decoration-underline">upload</span></p>
+          </Modal.Body>
       <Modal.Footer>
-      <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
-        <li><button onClick={() => this.setState({ show: false })} class="button cancel-btn py-2 px-4 m-0 mr-2">Cancel</button></li>
-        <li><button onClick={() => this.setState({ show: false })} class="button resend-btn py-2 px-4 m-0">Save Changes</button></li>
-      </ul>
+      <div class="col-12 row mt-2">
+        <p className="small_font text-dark text-center mx-auto mb-2">Are you sure you would like to continue with this mass time entry?</p>
+      
+        <div className="col-6"><button className="button resend-btn background-red px-2 float-left">No Cancel</button></div>
+        <div className="col-6"><button className="button resend-btn float-right px-4">Yes, Continue</button></div>
+      </div>
       </Modal.Footer>
-    </Modal>
-    <Modal  scrollable={true} size="lg" onHide={() => this.setState({ editshow: false })} 
-          show={this.state.editshow}>
-      <Modal.Header closeButton>
-        <Modal.Title className="h6" id="contained-modal-title-vcenter">
-        OHTA Activity Created by John Smith on April 2, 2016
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="show-grid small_font px-5">
-          <div className="form-group">
-              <label for="exampleInputEmail1">Activity Name*</label>
-              <input type="text" className="form-control" placeholder="Activity Name" />
-            </div>
-            <div className="form-group">
-              <label for="exampleInputEmail1">Activity Description</label>
-              <textarea type="email" className="form-control" placeholder="Enter Activity Description"></textarea>
-            </div>
-            <div className="form-group row">
-              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <label>Activity ID*</label>
-                <input type="text" className="form-control" placeholder="Enter Activity ID" />
-              </div>
-              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <label>Activity Type*</label>
-                <select onChange={this.toggleChangePolicy} placeholder="Select" className="form-control" name="activity_type">
-                    <option value="Duty">Duty</option>
-                    <option value="PTO">PTO</option>
-                    <option value="Holiday">Holiday</option>
-                    <option value="GA">G&A</option>
-                    <option value="OH">OH</option>
-                    <option value="LWOP">LWOP</option>
-                    <option value="Extra Mile">Extra Mile</option>
-                    <option value="Other">Other</option>
-                </select>
-              </div>
-              <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                <label>Activity Status*</label>
-                <select placeholder="Select" className="form-control" name="activity_status">
-                    <option>Inactive</option>
-                    <option>Active</option>
-                </select>
-              </div>
-            </div>
-            <div className="form-group row">
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="mr-2">Activity Time Approver* 
-                <MDBTooltip domElement tag="span" placement="top">
-                <span className="ml-2">
-                <i class="fa fa-question-circle" aria-hidden="true"></i></span>
-                <span>Not seeing your activity time approver? Go to Employees to set up the approver</span></MDBTooltip></label>
-                <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
-                    <option>Joe Smith</option>
-                    <option>Jesse Lake</option>
-                </select>
-                </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                  <label>TimeClock Rounding Policy</label>
-                  <select disabled={this.state.rounding} placeholder="Select" className="form-control" name="approver">
-                      <option>N/A</option>
-                  </select>
-                </div>
-                <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                  <label>Holiday Policy</label>
-                  <select disabled={this.state.holidaypolicy} placeholder="Select" className="form-control" name="approver">
-                      <option>Standard</option>
-                  </select>
-                </div>
-            </div> 
-            <div className="form-group">
-              <label>Setup for Allowance of Extra Hours</label>
-              </div>
-              <div className="form-group row">
-              <label className="pr-2 float-left col-2" style={{marginTop:'-4px'}}>Allowed</label>
-              <input type="checkbox" defaultChecked={this.state.isChecked}
-          onChange={this.toggleChange} value="1" className="form-control" style={{width:'3%'}} name="country"/>                  
-            </div>
-              <div className="form-group row">
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="pr-2">Start Week</label>
-              <DatePicker selected={ this.state.startDate }
-          name="startDate" className="form-control" customInput={<this.ExampleCustomInput />} 
-          filterDate={this.isWeekday} onChange={ this.handleChange } className="form-control" 
-          dateFormat="MM/dd/yyyy"/>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="pr-2">End Week</label>
-              <DatePicker selected={ this.state.startDate1 }
-          name="startDate" className="form-control" customInput={<this.ExampleCustomInput1 />} 
-          filterDate={this.isWeekday1} onChange={ this.handleChange1 } className="form-control" 
-          dateFormat="MM/dd/yyyy"/>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-              <label className="pr-2">Max Hours</label>
-              <DatePicker selected={ this.state.startDate2 }
-          name="startDate" className="form-control" customInput={<this.ExampleCustomInput2 />} 
-           onChange={ this.handleChange2 } showTimeSelect
-           showTimeSelectOnly
-           timeIntervals={15}
-           timeCaption="Time"
-           dateFormat="h:mm aa" className="form-control" dateFormat="MM/dd/yyyy"/>
-            </div>
-            </div>
-            <div className="form-group row pt-3">
-              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-                <input type="button" className="btn btn-danger" value="Delete Activity" />
-              </div>
-              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12">
-                <p>Do you want to permanently delete this activity? This cannot be undone and you will 
-                  lose all data for this activity. It is recommended that you inactive the activity.</p>
-              </div>
-            </div>  
-      </Modal.Body>
-      <Modal.Footer>
-      <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">
-        <li><button onClick={() => this.setState({ editshow: false })} class="button cancel-btn py-2 px-4 m-0 mr-2">Cancel</button></li>
-        <li><button onClick={() => this.setState({ editshow: false })} class="button resend-btn py-2 px-4 m-0">Save Changes</button></li>
-      </ul>
-      </Modal.Footer>
-    </Modal>
+    </Modal>    
     </div>
   );
 }
