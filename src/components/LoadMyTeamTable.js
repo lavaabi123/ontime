@@ -224,11 +224,16 @@ class LoadMyTeamTable extends React.Component {
         </Row>
       </Card>
       <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
-        <div class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">
+        <div class="text-left float-left col-lg-8 col-md-8 col-xl-8 col-sm-12 pl-0">
           <MDBBtn color="success"><i class="fa fa-thumbs-up text-white"></i></MDBBtn>
           <MDBBtn className="ml-2" color="danger"><i class="fa fa-thumbs-down text-white"></i></MDBBtn>
         </div>
-        <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
+        <div className="col-lg-2 col-xl-2 col-md-2 col-sm-12 px-1">
+          <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-3 m-0 float-right">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
+        </div>
+        <div className="col-lg-2 col-xl-2 col-md-2 col-sm-12 px-1">
+          <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-3 m-0 float-right">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
+        </div>
       </div>
       <MDBDataTable hover info={false} className="activitytable"  responsive={true} displayEntries={false} 
       noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} 
