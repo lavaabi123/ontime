@@ -128,7 +128,6 @@ render() {
       </Modal.Footer>
     </Modal>
         </div>
-        <Footer />
       </Container>
       
     </div>

@@ -71,7 +71,6 @@ render() {
             </div>
         </div>
         </div>
-        <Footer />
       </Container>
       
     </div>

@@ -19,7 +19,6 @@ render() {
          <LoadTable />
         </div>
         </div>
-        <Footer />
       </Container>
       
     </div>

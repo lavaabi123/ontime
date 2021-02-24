@@ -23,7 +23,6 @@ render() {
         <LoadEmployeesTable />
         </div>
         </div>
-        <Footer />
       </Container>
       
     </div>

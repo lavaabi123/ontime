@@ -19,7 +19,6 @@ render() {
          <LoadTimesheetsTable />
         </div>
         </div>
-        <Footer />
       </Container>
       
     </div>

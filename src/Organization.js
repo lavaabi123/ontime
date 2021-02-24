@@ -17,7 +17,6 @@ render() {
         <div className="contentwrapper pt-3 pb-5 mb-5">
          <OrganizationTabs />
         </div>
-        <Footer />
       </Container>
       
     </div>

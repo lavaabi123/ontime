@@ -18,7 +18,7 @@ class ForgotPassword extends React.Component {
               <img src={Logo} width="86%" alt="Logo"/>
               <img alt="Banner" width="15%" src={require("./components/assets/img/time-icon.png").default} />
               <p className="font-weight-bold font-11 mb-2">Reset Password</p>
-              <p className="font-10 mb-2">Enter Your Email Address below to have instructions to reset your password sent to your</p>
+              <p className="font-10 mb-2">Enter Your Email Address below to have instructions to reset your password</p>
               <form onSubmit= { this.onSubmit }>
               <div className="input-group my-3">
                   <div className="input-group-prepend">

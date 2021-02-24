@@ -265,7 +265,6 @@ render() {
             <TimesheetPreview />
             </div>
         </div>
-        <Footer />
       </Container>
       
     </div>

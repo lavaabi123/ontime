@@ -24,13 +24,13 @@ class Login extends React.Component {
               <p className="font-11 mb-2">Administrator Login</p>
               <form onSubmit= { this.onSubmit }>
               <div className="input-group mb-3">
-                  <div className="input-group-prepend">
-                  <span className="input-group-text"><i className="fa fa-envelope" aria-hidden="true"></i></span>
+                  <div className="input-group-prepend" style = {{width:'12%'}}>
+                  <span className="input-group-text"><i style={{fontSize:'12px'}} className="fa fa-envelope" aria-hidden="true"></i></span>
                   </div>
                   <input type="text" className="form-control" placeholder="Login Name" />
               </div>
               <div className="input-group mb-3">
-                  <div className="input-group-prepend">
+                  <div className="input-group-prepend" style = {{width:'12%'}}>
                   <span className="input-group-text"><i className="fa fa-lock" aria-hidden="true"></i></span>
                   </div>
                   <input type="password" className="form-control" placeholder="Password" />
