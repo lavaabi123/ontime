@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ManagerHeader from './components/ManagerHeader.js';
 import MyTeamTabs from './components/MyTeamTabs.js';
-import Footer from './components/Footer.js';
 
 class MyTeam extends React.Component {  
 render() {
@@ -19,7 +18,6 @@ render() {
          <MyTeamTabs />
         </div>
         </div>
-        <Footer />
       </Container>
       
     </div>
