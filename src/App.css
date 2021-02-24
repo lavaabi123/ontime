@@ -675,6 +675,21 @@ body.modal-open .navbar{
   border-right: 11px solid transparent;
   border-bottom: 11px solid white;
 }
+.card-header{
+  background-color: #FFF !important;
+  border-bottom: none !important;
+}
+.card-footer{
+  background-color: #FFF !important;
+  border-top: none !important;
+}
+.round-btn{
+  background-color: #21BEDE;
+  border-radius: 50%;
+  color: #ffffff;
+  padding: .5rem .9em !important;
+  margin: 3px;
+}
 
 
 @media (max-width: 767px){
