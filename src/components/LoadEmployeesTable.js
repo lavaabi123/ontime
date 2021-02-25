@@ -217,8 +217,10 @@ class LoadEmployeesTable extends React.Component {
           <label>Status</label>
           <select className="form-control">
             <option>All Employees</option>
-            <option>Active Employees</option>
-            <option>Inactive Employees</option>
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>Terminated</option>
+            <option>Archived</option>
           </select>
         </div>
       </div>
@@ -249,6 +251,8 @@ class LoadEmployeesTable extends React.Component {
                 <select placeholder="Select" className="form-control" name="activity_status">
                     <option>Active</option>
                     <option>Inactive</option>
+                    <option>Terminated</option>
+                    <option>Archived</option>
                 </select>
               </div>
             </div>
@@ -299,18 +303,18 @@ class LoadEmployeesTable extends React.Component {
               <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <label>Employee Type*</label>
                 <select onChange={this.toggleChangePolicy} placeholder="Select" className="form-control" name="activity_type">
-                    <option value="Sararied">Sararied</option>
+                    <option value="Salaried">Salaried</option>
                     <option value="FT">Full Time Hourly</option>
                     <option value="PT">PT Hourly</option>
-                    <option value="GA">Temporary</option>
-                    <option value="OH">SUB</option>
-                    <option value="LWOP">Intern</option>
+                    <option value="Temporary">Temporary</option>
+                    <option value="SUB">SUB</option>
+                    <option value="Intern">Intern</option>
                 </select>
               </div>
             </div>
             <div className="form-group row">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                  <label>Wage Category</label>
+                  <label>Wage Category*</label>
                   <select disabled={this.state.rounding} placeholder="Select" className="form-control" name="approver">
                       <option>Exempt</option>
                       <option>Non-Exempt</option>
@@ -357,7 +361,7 @@ class LoadEmployeesTable extends React.Component {
             <div className="form-group row border-bottom pb-3">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>City</label>
-                    <input type="text" className="form-control" placeholder="Enter Email ID" />
+                    <input type="text" className="form-control" placeholder="Enter City" />
                 </div>
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>State</label>
@@ -425,10 +429,10 @@ class LoadEmployeesTable extends React.Component {
             </div>
             <div className="form-group row">
                 <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                    <label className="mr-2">Activities - </label>
-                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
-                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
-                    <DualListBox
+                    <label className="mr-2">Activities</label>
+                    <DualListBox lang ={{selectedHeader:'Selected Activities',
+                    availableHeader: 'Available Activities'}}
+                    showHeaderLabels={true}
                         options={this.state.options}
                         selected={this.state.selected}
                         onChange={this.onChange} className="mt-2" icons={{
@@ -488,7 +492,7 @@ class LoadEmployeesTable extends React.Component {
           show={this.state.editshow}>
       <Modal.Header closeButton>
         <Modal.Title className="h6" id="contained-modal-title-vcenter">
-        Edit Employees
+        Edit Employee Profile
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="show-grid small_font px-5">
@@ -506,6 +510,8 @@ class LoadEmployeesTable extends React.Component {
                 <select placeholder="Select" className="form-control" name="activity_status">
                     <option>Active</option>
                     <option>Inactive</option>
+                    <option>Terminated</option>
+                    <option>Archived</option>
                 </select>
               </div>
             </div>
@@ -556,18 +562,18 @@ class LoadEmployeesTable extends React.Component {
               <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                 <label>Employee Type*</label>
                 <select onChange={this.toggleChangePolicy} placeholder="Select" className="form-control" name="activity_type">
-                    <option value="Sararied">Sararied</option>
+                   <option value="Salaried">Salaried</option>
                     <option value="FT">Full Time Hourly</option>
                     <option value="PT">PT Hourly</option>
-                    <option value="GA">Temporary</option>
-                    <option value="OH">SUB</option>
-                    <option value="LWOP">Intern</option>
+                    <option value="Temporary">Temporary</option>
+                    <option value="SUB">SUB</option>
+                    <option value="Intern">Intern</option>
                 </select>
               </div>
             </div>
             <div className="form-group row">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                  <label>Wage Category</label>
+                  <label>Wage Category*</label>
                   <select disabled={this.state.rounding} placeholder="Select" className="form-control" name="approver">
                       <option>Exempt</option>
                       <option>Non-Exempt</option>
@@ -614,7 +620,7 @@ class LoadEmployeesTable extends React.Component {
             <div className="form-group row border-bottom pb-3">
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>City</label>
-                    <input type="text" className="form-control" placeholder="Enter Email ID" />
+                    <input type="text" className="form-control" placeholder="Enter City" />
                 </div>
                 <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <label>State</label>
@@ -682,10 +688,10 @@ class LoadEmployeesTable extends React.Component {
             </div>
             <div className="form-group row">
                 <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                    <label className="mr-2">Activities - </label>
-                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
-                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
-                    <DualListBox
+                    <label className="mr-2">Activities</label>
+                    <DualListBox lang ={{selectedHeader:'Selected Activities',
+                    availableHeader: 'Available Activities'}}
+                    showHeaderLabels={true}
                         options={this.state.options}
                         selected={this.state.selected}
                         onChange={this.onChange} className="mt-2" icons={{
@@ -733,6 +739,15 @@ class LoadEmployeesTable extends React.Component {
                   <input type="file" className="form-control"/>
               </div>
             </div>
+            <div className="form-group row pt-3">
+              <div className="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                <input type="button" className="btn btn-danger" value="Archive Employee" />
+              </div>
+             {/* <div className="col-xl-9 col-lg-9 col-md-9 col-sm-12">
+                <p>Do you want to permanently delete this activity? This cannot be undone and you will 
+                  lose all data for this activity. It is recommended that you inactive the activity.</p>
+                    </div> */ }
+  </div>
       </Modal.Body>
       <Modal.Footer>
       <ul class="row form-group mr-0 mt-4 pr-0 list-inline pull-right">

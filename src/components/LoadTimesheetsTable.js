@@ -24,7 +24,8 @@ class LoadTimesheetsTable extends React.Component {
       holidaypolicy:true,
       rounding:false,
       approvedcount:false,
-      archivedcount:false
+      archivedcount:false,
+      timesheetstatus:'Approvable'
     };
   } 
   handleChange = (date) => {
@@ -40,6 +41,11 @@ class LoadTimesheetsTable extends React.Component {
   handleChange2 = (date) => {
     this.setState({
       startDate2: date
+    })
+  }
+  ChangeStatus = (d) => {
+    this.setState({
+      timesheetstatus: d.target.value
     })
   }
   toggleChange = (e) => {
@@ -206,7 +212,9 @@ class LoadTimesheetsTable extends React.Component {
       },
     ],
   }
+  
   return (
+    
     <div>
       <Card className="p-3 mb-3 small_font bg-amber border-0">
         <Row>
@@ -226,9 +234,15 @@ class LoadTimesheetsTable extends React.Component {
           </Col>
           <Col lg="2" md="2" sm="12">
             <label>Timesheet Status:</label>
-            <select placeholder="Select" className="form-control" name="state">
-                <option>All</option>
-                <option>Bi-Weekly</option>
+            <select onChange={this.ChangeStatus} placeholder="Select" className="form-control" name="state">
+                <option value="">All</option>
+                <option value="Active" selected = {this.state.timesheetstatus === 'Active' ? 'selected' : ''}>Active</option>
+                <option value="Inactive" selected = {this.state.timesheetstatus === 'Inactive' ? 'selected' : ''}>Inactive</option>
+                <option value="Submitted" selected = {this.state.timesheetstatus === 'Submitted' ? 'selected' : ''}>Submitted</option>
+                <option value="Approvable" selected = {this.state.timesheetstatus === 'Approvable' ? 'selected' : ''}>Approvable</option>
+                <option value="Approved" selected = {this.state.timesheetstatus === 'Approved' ? 'selected' : ''}>Approved</option>
+                <option value="Archivable" selected = {this.state.timesheetstatus === 'Archivable' ? 'selected' : ''}>Archivable</option>
+                <option value="Archived" selected = {this.state.timesheetstatus === 'Archived' ? 'selected' : ''}>Archived</option>
             </select>
           </Col>
           <Col lg="2" md="2" sm="12">
@@ -242,14 +256,21 @@ class LoadTimesheetsTable extends React.Component {
             <label>Employee Type:</label>
             <select placeholder="Select" className="form-control" name="state">
                 <option>All</option>
-                <option>option 1</option>
+                <option value="Salaried">Salaried</option>
+                    <option value="FT">Full Time Hourly</option>
+                    <option value="PT">PT Hourly</option>
+                    <option value="Temporary">Temporary</option>
+                    <option value="SUB">SUB</option>
+                    <option value="Intern">Intern</option>
             </select>
           </Col>
         </Row>
       </Card>
       <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
-        <div class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">
-          <MDBBtn color="success"><i class="fa fa-thumbs-up text-white"></i></MDBBtn>
+        <div class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">        
+          <MDBBtn color="success" data-toggle="tooltip" title="Approve"><i class="fa fa-thumbs-up text-white"></i></MDBBtn>               
+          <MDBBtn  style={this.state.timesheetstatus === 'Approved' ? {} : { display: 'none' }} color="success" className="ml-2">Set to Archivable</MDBBtn>
+          <MDBBtn  style={this.state.timesheetstatus === 'Archivable' ? {} : { display: 'none' }} color="success" className="ml-2">Set to Archived</MDBBtn>
         </div>
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
       </div>
@@ -257,7 +278,7 @@ class LoadTimesheetsTable extends React.Component {
       noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} 
       data={datatable} searching={false} />
 
-      <h5>Change Approved Timesheets into Archivable</h5>
+{/*      <h5>Change Approved Timesheets into Archivable</h5>
       <div class="col-12 row mt-4">
       <div class="col-lg-5 col-md-5 col-xl-5 col-sm-12 pl-0">
       <DatePicker  className="form-control" placeholderText="Start Date"
@@ -339,7 +360,7 @@ class LoadTimesheetsTable extends React.Component {
             </thead>
           </table>
         </div>
-      </div>
+</div> */ }
       <Modal  scrollable={true} size="md"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton className="h6 background-blue1">
