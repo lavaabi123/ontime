@@ -3,7 +3,7 @@ import {Container} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ManagerHeader from './components/ManagerHeader.js';
-import Footer from './components/Footer.js';
+import MyOwnTimesheet from './MyOwnTimesheet.js';
 
 class ManagerOrganization extends React.Component {  
 render() {
@@ -14,6 +14,7 @@ render() {
             <ManagerHeader />
         </header>
         <div className="contentwrapper pt-3 pb-5 mb-5">
+          <MyOwnTimesheet />
         </div>
       </Container>
       
