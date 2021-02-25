@@ -192,8 +192,7 @@ class LoadEmployeesGroupTable extends React.Component {
                     <label className="mr-2">Employees</label>
                     <DualListBox  lang ={{selectedHeader:'Selected Employees',
                     availableHeader: 'Available Employees'}}
-                    showHeaderLabels={true} lang ={{selectedHeader:'Selected Employees',
-                    availableHeader: 'Available Employees'}}
+                    showHeaderLabels={true} 
                         options={this.state.empoptions}
                         selected={this.state.empselected}
                         onChange={this.onChangeEmp} className="mt-2" icons={{

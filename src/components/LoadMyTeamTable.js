@@ -228,6 +228,19 @@ class LoadMyTeamTable extends React.Component {
             dateFormat="MM/dd/yyyy" placeholder="MM/dd/yyyy"/>
           </Col>
           <Col lg="2" md="2" sm="12">
+            <label>Timesheet Status:</label>
+            <select placeholder="Select" className="form-control" name="state">
+                <option>All</option>
+                <option>Active</option>
+                <option>Inactive</option>
+                <option>Submitted</option>
+                <option selected>Approvable</option>
+                <option>Approved</option>
+                <option>Archivable</option>
+                <option>Archived</option>
+            </select>
+          </Col>
+          <Col lg="2" md="2" sm="12">
             <label>Activity:</label>
             <select placeholder="Select" className="form-control" name="state">
                 <option>All</option>
@@ -238,7 +251,12 @@ class LoadMyTeamTable extends React.Component {
             <label>Employee Type:</label>
             <select placeholder="Select" className="form-control" name="state">
                 <option>All</option>
-                <option>option 1</option>
+                <option value="Salaried">Salaried</option>
+                <option value="FT">Full Time Hourly</option>
+                <option value="PT">PT Hourly</option>
+                <option value="Temporary">Temporary</option>
+                <option value="SUB">SUB</option>
+                <option value="Intern">Intern</option>
             </select>
           </Col>
         </Row>
