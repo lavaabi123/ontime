@@ -102,7 +102,6 @@ class LoadMyTeamTable extends React.Component {
   );
 
   render() {
-<<<<<<< HEAD
     let datatable = {
       columns: [
         {
@@ -207,112 +206,6 @@ class LoadMyTeamTable extends React.Component {
         },
       ],
     }
-=======
-  let datatable = {
-    columns: [
-      {
-        label: <input type="checkbox" />,
-        field: 'check',
-      },
-      {
-        label: 'Week Start',
-        field: 'start',
-        width: '10%',
-      },
-      {
-        label: 'Status',
-        field: 'status',
-      },
-      {
-        label: 'Last Name',
-        field: 'last_name',
-      },
-      {
-        label: 'First Name',
-        field: 'first_name',
-      },
-      {
-        label: 'Total Hours',
-        field: 'total',
-      },
-      {
-        label: 'Overtime Hours',
-        field: 'overtime',
-      },
-      {
-        label: 'Max OT Allowed',
-        field: 'maxot',
-      },
-      {
-        label: 'Regular Hours <=40',
-        field: 'regular',
-      },
-      {
-        label: <span>OHTA Hours<i class="fa fa-clock-o ml-1 text-danger"></i></span>,
-        field: 'ohta',
-      },
-      {
-        label: 'CLA Hours',
-        field: 'cla',
-      },
-      {
-        label: 'Holiday Hours',
-        field: 'holiday',
-      },
-      {
-        label: 'PTO Hours',
-        field: 'pto',
-      },
-    ],
-    rows: [
-      {
-        check: <input type="checkbox" />,
-        start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><i class="fa fa-clock-o mr-1 text-success"></i>4/24/2020</Nav.Link>,
-        status: 'Active',
-        last_name: 'Allen',
-        first_name: 'Joe',
-        total: '36.25',
-        overtime: '0.00',
-        maxot: '0.00',
-        regular: '36.25',
-        ohta: '28.25',
-        cla: '7.75',
-        holiday: '0.00',
-        pto: '0.25',
-      },
-      {
-        check: <input type="checkbox" />,
-        start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><span className="ml-3">4/24/2020</span></Nav.Link>,
-        status: 'Active',
-        last_name: 'Allen',
-        first_name: 'Joe',
-        total: '36.25',
-        overtime: 'N/A',
-        maxot: '0.00',
-        regular: '36.25',
-        ohta: '28.25',
-        cla: '7.75',
-        holiday: '0.00',
-        pto: '0.25',
-      },
-      {
-        check: <input type="checkbox" />,
-        start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><i class="fa fa-exclamation-triangle mr-1 text-warning"></i>4/24/2020</Nav.Link>,
-        status: 'Not Submitted',
-        last_name: 'Allen',
-        first_name: 'Joe',
-        total: '36.25',
-        overtime: '0.00',
-        maxot: '0.00',
-        regular: '36.25',
-        ohta: '28.25',
-        cla: '7.75',
-        holiday: '0.00',
-        pto: '0.25',
-      },
-    ],
-  }
->>>>>>> 9f20cabb4182cb53edd25700d8d87d4750875ab7
   return (
     <div>
       <Card className="p-3 mb-3 small_font bg-amber border-0">
@@ -354,47 +247,19 @@ class LoadMyTeamTable extends React.Component {
         <div class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">
           <MDBBtn color="success"><i class="fa fa-thumbs-up text-white"></i></MDBBtn>
         </div>
-<<<<<<< HEAD
         <div className="col-lg-2 col-xl-2 col-md-2 col-sm-12 px-1">
           </div>
         <div className="col-lg-2 col-xl-2 col-md-2 col-sm-12 px-1">
           <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-3 m-0 float-right">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
         </div>
-=======
-        <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
->>>>>>> 9f20cabb4182cb53edd25700d8d87d4750875ab7
       </div>
       <MDBDataTable bordered hover info={false} className="activitytable timesheets"  responsive={true} displayEntries={false} 
       noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} 
       data={datatable} searching={false} />
-<<<<<<< HEAD
-=======
-
-      <div class="col-12 row mt-4" style={this.state.archivedcount === true ? {} : { display: 'none' }}>
-        <div class="col-lg-8 col-md-8 col-xl-8 col-sm-12 pl-0 pr-0">
-          <table class="table table-bordered table-hover dataTable timesheets1">
-            <thead data-test="datatable-head">
-              <tr>
-              <th class="sorting">Archivable Timesheet Count</th>
-              <th class="sorting">15</th>
-              <th><button onClick={() => this.setState({ show: false })} class="button resend-btn py-2 px-4 ml-5 mt-0">Move to Archived</button>
-              </th>
-              </tr>
-              <tr>
-              <th class="sorting">Not Archivable Timesheet Count</th>
-              <th class="sorting">25</th>
-              <th></th>
-              </tr>
-            </thead>
-          </table>
-        </div>
-      </div>
->>>>>>> 9f20cabb4182cb53edd25700d8d87d4750875ab7
       <Modal  scrollable={true} size="md"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton className="h6 background-blue1">
         <Modal.Title className="h6 text-white" id="contained-modal-title-vcenter">
-<<<<<<< HEAD
         Mass Time Entry
         </Modal.Title>
       </Modal.Header>
@@ -431,55 +296,11 @@ class LoadMyTeamTable extends React.Component {
       <div class="col-12 row mt-2">
         <p className="small_font text-dark text-center mx-auto mb-2">Are you sure you would like to continue with this mass time entry?</p>
       
-=======
-        Extra Hour Allowance
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body className="show-grid small_font px-5">
-        <p className="xs_font text-dark text-center">
-          <span className="font-weight-bold">Mary Campbell</span> has <span className="text-success font-weight-bold">been approved</span> for overtime this week and has currently used 
-          2.25 hours of the 20:00 overtime hours allowed. Would you like to modify the overtime allowance for this employee?
-        </p>
-        <div className="form-group row">
-          <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12">
-            <label for="exampleInputEmail1">Modify Begin Date:</label>
-            <input type="date" className="form-control" placeholder="04/24/2016" />
-          </div>
-          <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12">
-            <label for="exampleInputEmail1">Modify End Date:</label>
-            <input type="date" className="form-control" placeholder="04/24/2016" />
-          </div>
-        </div>
-        <p className="xs_font text-dark text-center">
-          Modify the max overtime hours allowed for this employee during the time period:
-        </p>
-        <div className="form-group row">
-          <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12">
-            <input type="text" className="form-control float-right col-lg-6 col-md-6 col-xl-6" placeholder="" />
-          </div>
-          <div class="col-lg-6 col-md-6 col-xl-6 col-sm-12 pl-0">
-          <p className="xs_font text-dark text-center mt-2">
-            Total Overtime Hours for this employee
-          </p>
-          </div>           
-        </div>
-          </Modal.Body>
-      <Modal.Footer>
-      <div class="col-12 row mt-2">
-      <p className="xs_font text-dark text-center mt-2">
-          Please note that this will overwrite any previous overtime allowance for this employee.<br />
-           Are you sure you would like to continue?
-        </p>
->>>>>>> 9f20cabb4182cb53edd25700d8d87d4750875ab7
         <div className="col-6"><button className="button resend-btn background-red px-2 float-left">No Cancel</button></div>
         <div className="col-6"><button className="button resend-btn float-right px-4">Yes, Continue</button></div>
       </div>
       </Modal.Footer>
-<<<<<<< HEAD
     </Modal>  
-=======
-    </Modal>    
->>>>>>> 9f20cabb4182cb53edd25700d8d87d4750875ab7
     </div>
   );
 }
