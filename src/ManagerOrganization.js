@@ -15,7 +15,6 @@ render() {
         </header>
         <div className="contentwrapper pt-3 pb-5 mb-5">
         </div>
-        <Footer />
       </Container>
       
     </div>

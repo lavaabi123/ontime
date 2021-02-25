@@ -168,7 +168,7 @@ class LoadEmployeesGroupTable extends React.Component {
         <h6 class="text-left float-left col-lg-9 col-md-9 col-xl-9 col-sm-12 pl-0">Employee Group List</h6>
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-3 col-xl-3 col-md-3 col-sm-12 m-0"><i class="fa fa-plus pr-2"></i>Add Employee Group</button>
       </div>
-      <MDBDataTable hover info={false}  responsive={true} displayEntries={false} noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} searching={false} />
+      <MDBDataTable  hover info={false}  responsive={true} displayEntries={false} noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} searching={false} />
       <Modal scrollable={true} size="lg"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton>
@@ -189,11 +189,11 @@ class LoadEmployeesGroupTable extends React.Component {
             </div>
             <div className="form-group row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label className="mr-2">Employees - </label>
-                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
-                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
-                    
-                    <DualListBox
+                    <label className="mr-2">Employees</label>
+                    <DualListBox  lang ={{selectedHeader:'Selected Employees',
+                    availableHeader: 'Available Employees'}}
+                    showHeaderLabels={true} lang ={{selectedHeader:'Selected Employees',
+                    availableHeader: 'Available Employees'}}
                         options={this.state.empoptions}
                         selected={this.state.empselected}
                         onChange={this.onChangeEmp} className="mt-2" icons={{
@@ -207,11 +207,9 @@ class LoadEmployeesGroupTable extends React.Component {
             </div>
             <div className="form-group row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label className="mr-2">Activities - </label>
-                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
-                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
-                    
-                    <DualListBox
+                    <label className="mr-2">Activities</label>
+                    <DualListBox  lang ={{selectedHeader:'Selected Activities',
+                    availableHeader: 'Available Activities'}} showHeaderLabels={true} 
                         options={this.state.options}
                         selected={this.state.selected}
                         onChange={this.onChange} className="mt-2" icons={{
@@ -251,11 +249,9 @@ class LoadEmployeesGroupTable extends React.Component {
             </div>
             <div className="form-group row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label className="mr-2">Employees - </label>
-                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
-                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
-                    
-                    <DualListBox
+                    <label className="mr-2">Employees</label>
+                    <DualListBox  lang ={{selectedHeader:'Selected Employees',
+                    availableHeader: 'Available Employees'}} showHeaderLabels={true} 
                         options={this.state.empoptions}
                         selected={this.state.empselected}
                         onChange={this.onChangeEmp} className="mt-2" icons={{
@@ -269,11 +265,10 @@ class LoadEmployeesGroupTable extends React.Component {
             </div>
             <div className="form-group row">
                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <label className="mr-2">Activities - </label>
-                    <span className="link-style pl-0" onClick={() => this.setState({ activitylist: true })}>Add</span> | 
-                    <span className="link-style pl-3" onClick={() => this.setState({ activitylist: true })}>Remove</span>
+                    <label className="mr-2">Activities</label>
                     
-                    <DualListBox
+                    <DualListBox  lang ={{selectedHeader:'Selected Activities',
+                    availableHeader: 'Available Activities'}} showHeaderLabels={true} 
                         options={this.state.options}
                         selected={this.state.selected}
                         onChange={this.onChange} className="mt-2" icons={{

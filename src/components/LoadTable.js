@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBDataTable,MDBTooltip } from 'mdbreact';
+import { MDBTable, MDBTableBody, MDBTableHead,MDBTooltip  } from 'mdbreact';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 /* import "mdbreact/dist/css/mdb.css";
@@ -102,51 +102,50 @@ class LoadTable extends React.Component {
   let datatable = {
     columns: [
       {
-        label: 'Name',
-        field: 'name',
-        attributes: {
-          'aria-controls': 'DataTable',
-          'aria-label': 'Name',
-        },
+        label: '',
+        field: 'name'
       },
       {
-        label: 'Description',
+        label: '',
         field: 'description',
       },
       {
-        label: 'Status',
+        label: '',
         field: 'status',
       },
       {
-        label: 'ID',
+        label: '',
         field: 'id',
       },
       {
-        label: 'Type',
+        label: '',
         field: 'type',
       },
       {
-        label: 'Approver',
+        label: '',
         field: 'approver',
       },
       {
-        label: 'Extra Hours',
+        label: 'Allowance for Extra Hours',
         field: 'allowance',
+        attributes: {
+          'colspan':'4'
+        },
       },
       {
-        label: 'Start Date',
+        label: '',
         field: 'startdate',
       },
       {
-        label: 'End Date',
+        label: '',
         field: 'enddate',
       },
       {
-        label: 'Max Hours',
+        label: '',
         field: 'maxhours',
       },
       {
-        label: 'Clock Round',
+        label: '',
         field: 'clock',
       },
       {
@@ -160,7 +159,21 @@ class LoadTable extends React.Component {
         sort: 'disabled',
       },
     ],
-    rows: [
+    rows: [{
+      name: <b>Name</b>,
+      description: <b>Description</b>,
+      status: <b>Status</b>,
+      id: <b>ID</b>,
+      type: <b>Type</b>,
+      approver: <b>Approver</b>,
+      allowance: <b>Extra Hours</b>,
+      startdate:<b>Start Date</b>,
+      enddate:<b>End Date</b>,
+      maxhours:<b>Max Hours</b>,
+      clock: <b>Clock Round</b>,
+      action: <b>Edit</b>,
+      delete: <b>Delete</b>,
+    },
       {
         name: 'Henry',
         description: 'The Activity is for On Time',
@@ -214,9 +227,53 @@ class LoadTable extends React.Component {
         <h6 class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">List of Activities. Total number of activities: 3</h6>
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0"><i class="fa fa-plus pr-2"></i>Add Activity</button>
       </div>
-      <MDBDataTable hover info={false} className="activitytable"  responsive={true} displayEntries={false} 
-      noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} 
-      data={datatable} searching={false} />
+      <MDBTable bordered className="activityloadtable"> 
+          <MDBTableHead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th colspan='4' className='text-center'>Allowance For Extra Hours</th>
+            <th></th>
+            <th colspan='2'></th>
+            </tr>
+            <tr>
+            <th class="sorting">Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Approver</th>
+            <th>Extra Hours</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Max Hours</th>
+            <th>Clock Round</th>
+            <th colspan='2'>Action</th>
+            </tr>
+          </MDBTableHead>
+          <MDBTableBody>            
+            <tr>
+              <td>Henry</td>
+              <td>The Activity is for On Time</td>
+              <td>Active</td>
+              <td>1</td>
+              <td>Duty</td>
+              <td>Joe Smith</td>
+              <td>Allowed</td>
+              <td>02/14/2021</td>
+              <td>02/15/2021</td>
+              <td>2hrs</td>
+              <td>N/A</td>
+              <td><i class="fa fa-edit"  onClick={() => this.setState({ editshow: true })} ></i></td>
+              <td><i class="fa fa-trash"></i></td>                     
+            </tr>
+          </MDBTableBody>
+        </MDBTable>
+       
       <Modal scrollable={true} size="lg"  onHide={() => this.setState({ show: false })} 
           show={this.state.show}>
       <Modal.Header closeButton>
@@ -370,7 +427,7 @@ class LoadTable extends React.Component {
                 <span className="ml-2">
                 <i class="fa fa-question-circle" aria-hidden="true"></i></span>
                 <span>Not seeing your activity time approver? Go to Employees to set up the approver</span></MDBTooltip></label>
-                <select placeholder="Select" className="form-control" name="approver" multiple='multiple'>
+                <select placeholder="Select" className="form-control" name="approver">
                     <option>Joe Smith</option>
                     <option>Jesse Lake</option>
                 </select>

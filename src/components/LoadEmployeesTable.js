@@ -221,9 +221,6 @@ class LoadEmployeesTable extends React.Component {
             <option>Inactive Employees</option>
           </select>
         </div>
-        <div className="col-xl-2 col-lg-2 col-md-2 col-sm-12 mt-auto">
-          <button class="button resend-btn py-2 px-4 m-0">Filter</button>
-        </div>
       </div>
       <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
         <h6 class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">The Number of Total Employees : (3)</h6>

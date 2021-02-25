@@ -7,9 +7,9 @@ import {Nav} from 'react-bootstrap';
 import { NavLink} from "react-router-dom";
 
 
-class Login extends React.Component {
+class Manager extends React.Component {
   onSubmit = (e) => {      
-      this.props.history.push("/Organization");
+      this.props.history.push("/manager_timesheets");
   }
 	render() {
   return (
@@ -21,7 +21,7 @@ class Login extends React.Component {
               <img src={Logo} width="86%" alt="Logo"/>
               <img alt="Banner" width="15%" src={require("./components/assets/img/time-icon.png").default} />
               <p className="font-weight-bold font-11 mb-2">OnTime, The Timesheet Solution</p>
-              <p className="font-11 mb-2">Administrator Login</p>
+              <p className="font-11 mb-2">Manager Login</p>
               <form onSubmit= { this.onSubmit }>
               <div className="input-group mb-3">
                   <div className="input-group-prepend" style = {{width:'12%'}}>
@@ -52,4 +52,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Manager;

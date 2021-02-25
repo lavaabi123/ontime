@@ -76,8 +76,8 @@ class LoadTimesheetsTable extends React.Component {
     return day === 0
   }
   ExampleCustomInput = ({ value, onClick }) => (
-    <button disabled={this.state.startdisabled} className="example-custom-input form-control" style={{
-      minWidth: '100px',minHeight:'32px'
+    <button  className="example-custom-input form-control" style={{
+      minWidth: '135px',minHeight:'32px'
     }} onClick={onClick}>
       {value}
     </button>
@@ -87,8 +87,8 @@ class LoadTimesheetsTable extends React.Component {
     return day === 6
   }
   ExampleCustomInput1 = ({ value, onClick }) => (
-    <button disabled={this.state.enddisabled} className="example-custom-input form-control" style={{
-      minWidth: '100px',minHeight:'32px'
+    <button className="example-custom-input form-control" style={{
+      minWidth: '135px',minHeight:'32px'
     }} onClick={onClick}>
       {value}
     </button>
@@ -210,28 +210,35 @@ class LoadTimesheetsTable extends React.Component {
     <div>
       <Card className="p-3 mb-3 small_font bg-amber border-0">
         <Row>
-          <Col lg="3" md="3" sm="12">
-            <label>Date Range:</label>
-            <select placeholder="Select" className="form-control" name="state">
-                <option>Select</option>
-                <option>Bi-Weekly</option>
-            </select>
+          <Col lg="2" md="2" sm="12">
+              <label className="pr-2">Start Week</label>
+              <DatePicker selected={ this.state.startDate }
+          name="startDate" className="form-control" customInput={<this.ExampleCustomInput />} 
+          filterDate={this.isWeekday} onChange={ this.handleChange } className="form-control" 
+          dateFormat="MM/dd/yyyy" placeholderText="MM/dd/yyyy"/>
           </Col>
-          <Col lg="3" md="3" sm="12">
+          <Col lg="2" md="2" sm="12">
+            <label className="pr-2">End Week</label>
+                <DatePicker selected={ this.state.startDate1 }
+            name="startDate" className="form-control" customInput={<this.ExampleCustomInput1 />} 
+            filterDate={this.isWeekday} onChange={ this.handleChange1 } className="form-control" 
+            dateFormat="MM/dd/yyyy" placeholder="MM/dd/yyyy"/>
+          </Col>
+          <Col lg="2" md="2" sm="12">
             <label>Timesheet Status:</label>
             <select placeholder="Select" className="form-control" name="state">
                 <option>All</option>
                 <option>Bi-Weekly</option>
             </select>
           </Col>
-          <Col lg="3" md="3" sm="12">
+          <Col lg="2" md="2" sm="12">
             <label>Activity:</label>
             <select placeholder="Select" className="form-control" name="state">
                 <option>All</option>
                 <option>option 1</option>
             </select>
           </Col>
-          <Col lg="3" md="3" sm="12">
+          <Col lg="2" md="2" sm="12">
             <label>Employee Type:</label>
             <select placeholder="Select" className="form-control" name="state">
                 <option>All</option>
@@ -243,7 +250,6 @@ class LoadTimesheetsTable extends React.Component {
       <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
         <div class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">
           <MDBBtn color="success"><i class="fa fa-thumbs-up text-white"></i></MDBBtn>
-          <MDBBtn className="ml-2" color="danger"><i class="fa fa-thumbs-down text-white"></i></MDBBtn>
         </div>
         <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-4 col-lg-2 col-xl-2 col-md-2 col-sm-12 m-0">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
       </div>

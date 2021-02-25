@@ -29,6 +29,10 @@ button, input, optgroup, select, textarea{
   color: #999999;
 }
 
+.App{
+  min-height : 1000px;
+}
+
 form label, form input {
   display: block;
   width: 100%
@@ -451,6 +455,10 @@ table td {
 .table th {
   border-top: none !important;
   border-bottom: none !important;
+}
+.activityloadtable th{
+  border-top: 1px solid #dee2e6 !important;
+  border-bottom: 2px solid #dee2e6 !important;
 }
 .timesheets thead {
   background-color: #024769;

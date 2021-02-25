@@ -19,7 +19,6 @@ render() {
          <MyTeamTabs />
         </div>
         </div>
-        <Footer />
       </Container>
       
     </div>

@@ -17,8 +17,8 @@ render() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white mr-1" />
                 <Navbar.Collapse id="basic-navbar-nav" className="ml-0">
                     <Nav className="float-left">
-                        <Nav.Link as={NavLink} to="/timesheets">My Timesheet</Nav.Link>
-                        <Nav.Link as={NavLink} to="/MyTeam">My Team</Nav.Link> 
+                        <Nav.Link as={NavLink} to="/manager_timesheets">My Own Timesheet</Nav.Link>
+                        <Nav.Link as={NavLink} to="/MyEmployees">My Employees</Nav.Link> 
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
