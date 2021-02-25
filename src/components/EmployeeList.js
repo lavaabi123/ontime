@@ -153,7 +153,7 @@ class EmployeesList extends React.Component {
         timing: 'Punch In/Out',
         activity: 'OHTA/CLA',
         last_act: 'Punch In 02/5/2020 08:00 AM',
-        edit: <i class="fa fa-lock" onClick={() => this.setState({ editshow: true })}></i>,
+        edit: <i class="fa fa-lock text-warning" onClick={() => this.setState({ editshow: true })}></i>,
       },
       {
         name: 'Smith',
@@ -164,22 +164,14 @@ class EmployeesList extends React.Component {
         timing: 'Punch In/Out',
         activity: 'OHTA/CLA',
         last_act: 'Punch In 02/5/2020 08:00 AM',
-        edit: <i class="fa fa-lock" onClick={() => this.setState({ editshow: true })}></i>,
+        edit: <i class="fa fa-lock text-warning" onClick={() => this.setState({ editshow: true })}></i>,
       },
     ],
   }
   return (
     <div>
-      <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
-        <div className="text-left float-left col-lg-9 col-md-9 col-xl-9 col-sm-12 pl-0">
-            <p class="font-weight-bolder blue-color"><i className="fa fa-angle-left pr-2"></i>Activities</p>
-            <span className="text-muted">
-                Settings for Employees under Activity
-            </span>
-        </div>
-      </div>
       <div>
-        <h5 class="font-weight-bolder">Number of Total Employees (5)</h5>
+        <h6 class="font-weight-bolder">Number of Total Employees (5)</h6>
       </div>
       <MDBDataTable hover info={false}  responsive={true} displayEntries={false} noBottomColumns entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={datatable} searchTop searchBottom={false} />
      
@@ -210,11 +202,11 @@ class EmployeesList extends React.Component {
       </ul>
       </Modal.Footer>
     </Modal>
-    <Modal  scrollable={true} size="lg" onHide={() => this.setState({ editshow: false })} 
+    <Modal  scrollable={true} size="md" onHide={() => this.setState({ editshow: false })} 
           show={this.state.editshow}>
       <Modal.Header closeButton>
         <Modal.Title  id="contained-modal-title-vcenter">
-            <div className="h6">Allen, Joe - Reset Password</div>
+            <div className="h6"><i class="fa fa-lock text-warning mr-2"></i>Allen, Joe - Reset Password</div>
             <p className="small_font font-weight-normal">Please enter a new temporary password for Joe Allen. For security reason, password to be changed</p>
         </Modal.Title>
       </Modal.Header>
@@ -223,7 +215,7 @@ class EmployeesList extends React.Component {
               <Col lg="12" md="12" sm="12">
                 <div className="form-group">
                  <label for="exampleInputEmail1">Login Name</label>
-                 <input type="text" className="form-control" placeholder="Default Holiday Policy" Readonly />
+                 <input type="text" className="form-control" placeholder="Joe Smith" disabled />
                 </div>
               </Col>
               <Col lg="6" md="12" sm="12">

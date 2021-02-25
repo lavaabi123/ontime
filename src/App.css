@@ -79,6 +79,12 @@ select.form-control {
   cursor: pointer;
   padding: 0 3%;
 }
+.box-shadow{
+  box-shadow: 0px 2px 7px 1px #9e9e9ebd;
+}
+.modal-content{
+  box-shadow:0px 2px 7px 4px #9e9e9ebd;
+}
 .App {
   text-align: center;background: #FFF;
 }
@@ -88,6 +94,12 @@ select.form-control {
 .content{
   margin-top: 4%;
   text-align: left;
+}
+.border-bottom-none{
+  border-bottom : none;
+}
+.border-top-none{
+  border-top : none;
 }
 .App-logo {
   height: 40vmin;
@@ -395,6 +407,9 @@ select.form-control {
 .downicon:hover{ 
   cursor: pointer;
 }
+.cursor-pointer{ 
+  cursor: pointer;
+}
 .activitytable td{
   white-space: pre-line;
 }
@@ -409,9 +424,31 @@ select.form-control {
 .step-trigger:hover .bs-stepper-circle{
   background-color: #7DC24B !important;
 }
-.active .bs-stepper-label {
+#stepper1 .active .bs-stepper-label {
   border-bottom: 3px solid #7DC24B;
   color: #7DC24B;
+}
+#stepper2 .active .bs-stepper-label1 {
+  border-bottom: 3px solid #7DC24B;
+  color: #7DC24B;
+}
+#stepper3 .active .bs-stepper-label {
+  border-bottom: 3px solid #7DC24B;
+  color: #7DC24B;
+}
+#stepper4 .active .bs-stepper-label4 {
+  border-bottom: 3px solid #7DC24B;
+  color: #7DC24B;
+}
+.label-success {
+  background-color: #5cb85c;
+  color: #fff;
+  padding: 0.5%;
+}
+#stepper3 .bs-stepper .content.dstepper-block, .bs-stepper-pane.dstepper-block {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible;
 }
 .bs-stepper-label {
   padding-bottom:0.2rem;

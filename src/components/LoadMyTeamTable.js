@@ -24,12 +24,18 @@ class LoadMyTeamTable extends React.Component {
       holidaypolicy:true,
       rounding:false,
       approvedcount:false,
-      archivedcount:false
+      archivedcount:false,
+      timesheetstatus:'Approvable'
     };
   } 
   handleChange = (date) => {
     this.setState({
       startDate: date
+    })
+  }
+  ChangeStatus = (d) => {
+    this.setState({
+      timesheetstatus: d.target.value
     })
   }
   handleChange1 = (date) => {
@@ -161,7 +167,7 @@ class LoadMyTeamTable extends React.Component {
       rows: [
         {
           check: <input type="checkbox" />,
-          start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><i class="fa fa-clock-o mr-1 text-danger"></i>4/24/2020</Nav.Link>,
+          start: <Nav.Link as={NavLink} to="/EmployeeTimesheetDetail" className="small_font text-decoration-underline blue-color p-0"><i class="fa fa-clock-o mr-1 text-danger"></i>4/24/2020</Nav.Link>,
           status: 'Active',
           last_name: 'Allen',
           first_name: 'Joe',
@@ -176,7 +182,7 @@ class LoadMyTeamTable extends React.Component {
         },
         {
           check: <input type="checkbox" />,
-          start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><span className="ml-3">4/24/2020</span></Nav.Link>,
+          start: <Nav.Link as={NavLink} to="/EmployeeTimesheetDetail" className="small_font text-decoration-underline blue-color p-0"><span className="ml-3">4/24/2020</span></Nav.Link>,
           status: 'Active',
           last_name: 'Allen',
           first_name: 'Joe',
@@ -191,7 +197,7 @@ class LoadMyTeamTable extends React.Component {
         },
         {
           check: <input type="checkbox" />,
-          start: <Nav.Link as={NavLink} to="/TimesheetChart" className="small_font text-decoration-underline blue-color p-0"><i class="fa fa-exclamation-triangle mr-1 text-warning"></i>4/24/2020</Nav.Link>,
+          start: <Nav.Link as={NavLink} to="/EmployeeTimesheetDetail" className="small_font text-decoration-underline blue-color p-0"><i class="fa fa-exclamation-triangle mr-1 text-warning"></i>4/24/2020</Nav.Link>,
           status: 'Not Submitted',
           last_name: 'Allen',
           first_name: 'Joe',
@@ -210,8 +216,8 @@ class LoadMyTeamTable extends React.Component {
     <div>
       <Card className="p-3 mb-3 small_font bg-amber border-0">
         <Row>
-          <Col lg="3" md="3" sm="12" style={{marginTop:'2.5%'}}>
-          <input style={{float:'left',width:'25px',marginTop:'3px'}} type="checkbox" name="" class="form-control" /><label>All Active Timesheets</label>            
+          <Col lg="2" md="2" sm="12" style={{marginTop:'2.5%'}}>
+          <input style={{float:'left',width:'25px',marginTop:'3px'}} type="checkbox" name="" class="form-control" /><label style={{fontSize:'9pt'}} >All Active Timesheets</label>            
           </Col>
           <Col lg="2" md="2" sm="12">
               <label className="pr-2">Start Week</label>
@@ -229,15 +235,15 @@ class LoadMyTeamTable extends React.Component {
           </Col>
           <Col lg="2" md="2" sm="12">
             <label>Timesheet Status:</label>
-            <select placeholder="Select" className="form-control" name="state">
-                <option>All</option>
-                <option>Active</option>
-                <option>Inactive</option>
-                <option>Submitted</option>
-                <option selected>Approvable</option>
-                <option>Approved</option>
-                <option>Archivable</option>
-                <option>Archived</option>
+            <select onChange={this.ChangeStatus} placeholder="Select" className="form-control" name="state">
+                <option value="">All</option>
+                <option value="Active" selected = {this.state.timesheetstatus === 'Active' ? 'selected' : ''}>Active</option>
+                <option value="Inactive" selected = {this.state.timesheetstatus === 'Inactive' ? 'selected' : ''}>Inactive</option>
+                <option value="Submitted" selected = {this.state.timesheetstatus === 'Submitted' ? 'selected' : ''}>Submitted</option>
+                <option value="Approvable" selected = {this.state.timesheetstatus === 'Approvable' ? 'selected' : ''}>Approvable</option>
+                <option value="Approved" selected = {this.state.timesheetstatus === 'Approved' ? 'selected' : ''}>Approved</option>
+                <option value="Archivable" selected = {this.state.timesheetstatus === 'Archivable' ? 'selected' : ''}>Archivable</option>
+                <option value="Archived" selected = {this.state.timesheetstatus === 'Archived' ? 'selected' : ''}>Archived</option>
             </select>
           </Col>
           <Col lg="2" md="2" sm="12">
@@ -261,12 +267,36 @@ class LoadMyTeamTable extends React.Component {
           </Col>
         </Row>
       </Card>
+      <h6 className="text-center">Summary on Number of Timesheets in this Period</h6>
+      <table className="text-center timesheets1 table table-bordered table-hover dataTable">
+        <thead>
+          <th>Active</th>
+          <th>Inactive</th>
+          <th>Submitted</th>
+          <th>Approvable</th>
+          <th>Approved</th>
+          <th>Archivable</th>
+          <th>Archived</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>23</td>
+            <td>12</td>
+            <td>6</td>
+            <td>17</td>
+            <td>13</td>
+            <td>2</td>
+            <td>15</td>
+          </tr>
+        </tbody>
+      </table>
       <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
         <div class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">
-          <MDBBtn color="success"><i class="fa fa-thumbs-up text-white"></i></MDBBtn>
+        <MDBBtn color="success" data-toggle="tooltip" title="Approve"><i class="fa fa-thumbs-up text-white"></i></MDBBtn>               
+          <MDBBtn  style={this.state.timesheetstatus === 'Approved' ? {} : { display: 'none' }} color="success" className="ml-2">Set to Archivable</MDBBtn>
+          <MDBBtn  style={this.state.timesheetstatus === 'Archivable' ? {} : { display: 'none' }} color="success" className="ml-2">Set to Archived</MDBBtn>
+        
         </div>
-        <div className="col-lg-2 col-xl-2 col-md-2 col-sm-12 px-1">
-          </div>
         <div className="col-lg-2 col-xl-2 col-md-2 col-sm-12 px-1">
           <button onClick={() => this.setState({ show: true })} class="button resend-btn py-2 px-3 m-0 float-right">Mass Time Entry<i class="fa fa-book pl-2"></i></button>
         </div>

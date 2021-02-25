@@ -19,6 +19,8 @@ import TimesheetChart from './TimesheetChart.js';
 import MyEmployees from './MyEmployees.js';
 import reportWebVitals from './reportWebVitals';
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
+import EmployeeTimesheetDetail from './EmployeeTimesheetDetail.js';
+import EmployeeProfile from './EmployeeProfile';
 
 ReactDOM.render(
   <HashRouter>
@@ -56,6 +58,10 @@ ReactDOM.render(
           render={(props) => <MyProfile {...props} />}
         />
         <Route
+          path="/EmployeeProfile"
+          render={(props) => <EmployeeProfile {...props} />}
+        />
+        <Route
           path="/timesheets"
           render={(props) => <Timesheets {...props} />}
           />
@@ -76,15 +82,19 @@ ReactDOM.render(
           render={(props) => <TimesheetChart {...props} />}
         />
         <Route  
-          path="/manager_timesheets"
+          path="/employee_timesheets"
           render={(props) => <ManagerOrganization {...props} />}
         />
         <Route  
           path="/MyEmployees"
           render={(props) => <MyEmployees {...props} />}
         />
+        <Route  
+          path="/EmployeeTimesheetDetail"
+          render={(props) => <EmployeeTimesheetDetail {...props} />}
+        />
         <Route
-          path="/manager"
+          path="/employee"
           render={(props) => <Manager {...props} />}
         />
         <Redirect to="/index" />

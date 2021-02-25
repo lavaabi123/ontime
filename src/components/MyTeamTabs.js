@@ -6,11 +6,12 @@ import {Modal,Container,Toast,Row,Col,Card,Nav} from "react-bootstrap";
 import LoadMyTeamTable from './LoadMyTeamTable.js';
 import ReportingSection from '../ReportingSection.js';
 import EmployeeList from './EmployeeList.js';
+import ActivityList from './ActivityList.js';
 import { CardBody, CardFooter, CardHeader } from 'reactstrap';
 import { MDBBtn} from 'mdbreact';
 import {NavLink} from "react-router-dom";
 import PayrollTable from './PayrollTable.js';
-import TimesheetPreview from './TimesheetPreview.js';
+import EmployeeTimesheetPreview from './EmployeeTimesheetPreview.js';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -42,10 +43,13 @@ class MyTeamTabs extends Component {
         preview: 'timesheet',
         showreport: '',
         showreportcss: false,
+        abtemp: false,
+        abtact: false,
+        abtall:true
     };
   } 
   componentDidMount() {
-    this.stepper = new Stepper(document.querySelector('#stepper1'), {
+    this.stepper = new Stepper(document.querySelector('#stepper2'), {
       linear: false,
       animation: true
     })
@@ -82,26 +86,26 @@ handleOnChange = (e) => {
   render() {
     return (
       <div>
-        <div id="stepper1" className="bs-stepper">
+        <div id="stepper2" className="bs-stepper">
           <div className="bs-stepper-header">
             <div className="step" data-target="#tests-l-1">
               <button className="step-trigger">
-                <span className="bs-stepper-label">Manage Employee Time</span>
+                <span className="bs-stepper-label1">Manage Employee Time</span>
               </button>
             </div>
             <div className="step" data-target="#tests-l-2">
               <button className="step-trigger">
-                <span className="bs-stepper-label">Run Reports</span>
+                <span className="bs-stepper-label1">Run Reports</span>
               </button>
             </div>
             <div className="step" data-target="#tests-l-3">
               <button className="step-trigger">
-                <span className="bs-stepper-label">About Employees</span>
+                <span className="bs-stepper-label1">About Employees</span>
               </button>
               
             </div>
           </div>
-          <div className="">
+          <div className="stepper-content">
               <div id="tests-l-1" className="content small_font">
               <LoadMyTeamTable />
               </div>
@@ -297,23 +301,20 @@ handleOnChange = (e) => {
                             <option value="">Select</option>
                             <option value="timesheet">Get Timesheet Report: Spreadsheet and/or PDF</option>
                             <option value="original">Get Original Timesheet Receipt: PDF only</option>
-                            <option value="payroll">Get Payroll Report: Spreadsheet and/or PDF</option>
-                            <option value="quickbook">Get Export Report for QuickBook: Spreadsheet</option>
                         </select>
                 </div>
                 <div className="form-group row col-12 h-auto m-auto pt-3">
                     <button onClick={this.loadPreview} class="button resend-btn m-auto">Generate Report</button>
                 </div>
-                <div style={this.state.showreport === 'payroll' && this.state.showreportcss === true ? {} : { display: 'none' }} >
-                <PayrollTable />
+                <div style={this.state.showreport === 'timesheet' && this.state.showreportcss === true ? {} : { display: 'none' }} >
+                <EmployeeTimesheetPreview />
                 </div>
                 </form>
                 </div>
               </div>
               <div id="tests-l-3" className="content pl-2 small_font">
-                <Row>
+                <Row  style={this.state.abtall === true ? {} : { display: 'none' }}>
                     <Col lg="3" md="3" sm="12">
-                      <Nav.Link as={NavLink} to="/EmployeeList" className="p-0 text-dark">
                         <Card className="border">
                             <CardHeader className="pb-0 pt-4">
                                 <h6 className="font-weight-bolder">
@@ -322,30 +323,25 @@ handleOnChange = (e) => {
                             </CardHeader>
                             <CardBody className="py-1 font-11">
                                 <div className="font-10">
-                                    Project Created : 4/01/2020
+                                    Activity Created : 4/01/2020
                                 </div>
                                 <div className="font-10">
-                                    Project Administrator : Jessy Lake
+                                Activity Time Approver : Jessy Lake
                                 </div>
                             </CardBody>
                             <CardFooter>
                                 <div>
-                                    <MDBBtn  size="lg" className="round-btn">
+                                    <MDBBtn onClick={() => this.setState({abtall:false, abtemp: true,abtact: false })} size="lg" className="round-btn">
                                         <i className="fa fa-users" aria-hidden="true"></i>
                                     </MDBBtn>
-                                    <MDBBtn  size="lg" className="round-btn">
+                                    <MDBBtn onClick={() => this.setState({abtall:false, abtact: true,abtemp: false })} size="lg" className="round-btn">
                                         <i className="fa fa-book" aria-hidden="true"></i>
-                                    </MDBBtn>
-                                    <MDBBtn  size="lg" className="round-btn">
-                                        <i className="fa fa-phone" aria-hidden="true"></i>
                                     </MDBBtn>
                                 </div>
                             </CardFooter>
                         </Card>
-                        </Nav.Link>
                     </Col>
                     <Col lg="3" md="3" sm="12">
-                      <Nav.Link as={NavLink} to="/EmployeeList" className="p-0 text-dark">
                         <Card className="border">
                             <CardHeader className="pb-0 pt-4">
                                 <h6 className="font-weight-bolder">
@@ -354,34 +350,46 @@ handleOnChange = (e) => {
                             </CardHeader>
                             <CardBody className="py-1 font-11">
                                 <div className="font-10">
-                                    Project Created : 4/01/2020
+                                Activity Created : 4/01/2020
                                 </div>
                                 <div className="font-10">
-                                    Project Administrator : Jessy Lake
+                                Activity Time Approver : Jessy Lake
                                 </div>
                             </CardBody>
                             <CardFooter>
                                 <div>
-                                    <MDBBtn  size="lg" className="round-btn">
+                                    <MDBBtn onClick={() => this.setState({abtall:false, abtemp: true,abtact: false })} size="lg" className="round-btn">
                                         <i className="fa fa-users" aria-hidden="true"></i>
                                     </MDBBtn>
-                                    <MDBBtn  size="lg" className="round-btn">
+                                    <MDBBtn onClick={() => this.setState({abtall:false, abtact: true,abtemp: false })} size="lg" className="round-btn">
                                         <i className="fa fa-book" aria-hidden="true"></i>
-                                    </MDBBtn>
-                                    <MDBBtn  size="lg" className="round-btn">
-                                        <i className="fa fa-cog" aria-hidden="true"></i>
-                                    </MDBBtn>
-                                    <MDBBtn  size="lg" className="round-btn">
-                                        <i className="fa fa-phone" aria-hidden="true"></i>
                                     </MDBBtn>
                                 </div>
                             </CardFooter>
                         </Card>
-                        </Nav.Link>
                     </Col>
                 </Row>
-                <div className="mt-5">
+                <div className="mt-5"  style={this.state.abtemp === true ? {} : { display: 'none' }}>                  
+                  <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
+                    <div className="text-left float-left col-lg-9 col-md-9 col-xl-9 col-sm-12 pl-0">
+                        <p onClick={() => this.setState({abtall:true, abtact: false,abtemp: false })} class=" cursor-pointer font-weight-bolder blue-color"><i className="fa fa-angle-left pr-2"></i>Activities</p>
+                        <span className="text-muted">
+                            Settings for Employees under Activity : OHTA
+                        </span>
+                    </div>
+                  </div>
                   <EmployeeList />
+                </div>
+                <div className="mt-5"  style={this.state.abtact === true ? {} : { display: 'none' }}>
+                  <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
+                    <div className="text-left float-left col-lg-9 col-md-9 col-xl-9 col-sm-12 pl-0">
+                      <p onClick={() => this.setState({abtall:true, abtact: false,abtemp: false })} class="font-weight-bolder blue-color cursor-pointer"><i className="fa fa-angle-left pr-2"></i>Activities</p>
+                      <span className="text-muted">
+                            View Policies for Activity : OHTA
+                        </span>
+                    </div>
+                  </div>
+                  <ActivityList />
                 </div>
               </div>
             <Modal scrollable={true} size="lg" onHide={() => this.setState({ supershow: false })}

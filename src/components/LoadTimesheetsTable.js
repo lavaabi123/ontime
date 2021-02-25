@@ -216,8 +216,12 @@ class LoadTimesheetsTable extends React.Component {
   return (
     
     <div>
+      
       <Card className="p-3 mb-3 small_font bg-amber border-0">
         <Row>
+        <Col lg="2" md="2" sm="12" style={{marginTop:'2.5%'}}>
+          <input style={{float:'left',width:'25px',marginTop:'3px'}} type="checkbox" name="" class="form-control" /><label style={{fontSize:'9pt'}} >All Active Timesheets</label>            
+          </Col>
           <Col lg="2" md="2" sm="12">
               <label className="pr-2">Start Week</label>
               <DatePicker selected={ this.state.startDate }
@@ -266,6 +270,29 @@ class LoadTimesheetsTable extends React.Component {
           </Col>
         </Row>
       </Card>
+      <h6 className="text-center">Summary on Number of Timesheets in this Period</h6>
+      <table className="text-center timesheets1 table table-bordered table-hover dataTable">
+        <thead>
+          <th>Active</th>
+          <th>Inactive</th>
+          <th>Submitted</th>
+          <th>Approvable</th>
+          <th>Approved</th>
+          <th>Archivable</th>
+          <th>Archived</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>23</td>
+            <td>12</td>
+            <td>6</td>
+            <td>17</td>
+            <td>13</td>
+            <td>2</td>
+            <td>15</td>
+          </tr>
+        </tbody>
+      </table>
       <div class="col-12 row mr-0 pr-0 pl-0 ml-0 mb-3">
         <div class="text-left float-left col-lg-10 col-md-10 col-xl-10 col-sm-12 pl-0">        
           <MDBBtn color="success" data-toggle="tooltip" title="Approve"><i class="fa fa-thumbs-up text-white"></i></MDBBtn>               

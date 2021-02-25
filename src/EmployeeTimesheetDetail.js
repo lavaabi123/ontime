@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import AdminHeader from './components/AdminHeader.js';
+import ManagerHeader from './components/ManagerHeader.js';
 import Footer from './components/Footer.js';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,7 +9,7 @@ import {Modal,Container,Nav,Row,Col,Card,Popover,Button,OverlayTrigger} from "re
 import { MDBBtn } from 'mdbreact';
 import { NavLink} from "react-router-dom";
 
-class MyOwnTimesheet extends React.Component {  
+class EmployeeTimesheetDetail extends React.Component {  
   constructor(props) {
     super(props);
     this.state = {
@@ -73,8 +73,17 @@ render() {
   );
   return (
     <div className="App">
+      <Container>   
+        <header className="admin-header">
+            <ManagerHeader />
+        </header>
         <div className="content">
         <div className="contentwrapper pb-5 mb-5">
+        <ul class="pl-0">
+            <Nav.Link as={NavLink} to="/timesheets" className="p-0">
+               <button onClick={() => this.setState({ editshow: false })} class="button resend-btn py-2 px-4 m-0 mr-2">Back</button>
+            </Nav.Link>
+        </ul>
           <Card className="p-3 mb-3 small_font bg-amber border-0">
             <Row>
               <Col lg="5" md="5" sm="12">
@@ -133,14 +142,14 @@ render() {
                         <th colSpan='17' className="blue-head py-2">
                           <Row>
                             <Col lg="6" md="6" sm="12">
-                              <div className="pl-2  float-left">
-                                <span className="font-12">WEEKLY TIME SHEET</span>
+                              <div className="pl-2 float-left">
+                                <span className="font-16">WEEKLY TIME SHEET</span>
                                 <span className="small-font pl-2">April-24, 2020 - April-30, 2020</span>
                               </div>
                             </Col>
                             <Col lg="6" md="6" sm="12">
-                              <div className="pr-2 float-right">
-                                <span className="pr-2 font-12">Active</span>
+                              <div className="pr-2 pt-2 float-right">
+                                <span className="pr-2 font-16">Active</span>
                                 <span className="font-small">Due on : April 29, 2020</span>
                                 <span className="px-1">|</span>
                                 <i className="fa fa-print px-1"></i>
@@ -489,9 +498,12 @@ render() {
           </div>
         </div>
         </div>
+        <Footer />
+      </Container>
+      
     </div>
   );
   }
 }
 
-export default MyOwnTimesheet;
+export default EmployeeTimesheetDetail;

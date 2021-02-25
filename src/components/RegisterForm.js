@@ -124,15 +124,10 @@ class RegisterForm extends React.Component {
             </div>
             <div className="row mx-1">
                 <div className="pt-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 px-1">
-                    <input type="text" placeholder="Username*" name="user_name" value={this.state.fields.user_name} onChange={this.handleChange} className={ (this.state.errors["user_name"] ? this.state.errors["user_name"] : '')} />
+                  <input type="text" placeholder="Company Name*" name="company_name" value={this.state.fields.company_name} onChange={this.handleChange} className={ (this.state.errors["company_name"] ? this.state.errors["company_name"] : '')} />
                 </div>
                 <div className="pt-3 col-xl-6 col-lg-6 col-md-6 col-sm-12 px-1">
                     <input type="text" placeholder="TIN*" name="tin" value={this.state.fields.tin} onChange={this.handleChange} className={ (this.state.errors["tin"] ? this.state.errors["tin"] : '')} />
-                </div>
-            </div>
-            <div className="row mx-1 pt-3">
-                <div className="col-12 px-1">
-                    <input type="text" placeholder="Company Name*" name="company_name" value={this.state.fields.company_name} onChange={this.handleChange} className={ (this.state.errors["company_name"] ? this.state.errors["company_name"] : '')} />
                 </div>
             </div>
             <div className="row mx-1 pt-3">
@@ -141,10 +136,10 @@ class RegisterForm extends React.Component {
                 </div>
             </div>
             <div className="row mx-1">
-                <div className="pt-3 col-xl-5 col-lg-5 col-md-5 col-sm-12 px-1">
+                <div className="pt-3 col-xl-4 col-lg-4 col-md-4 col-sm-12 px-1">
                     <input type="text" placeholder="City" name="city" value={this.state.fields.city} onChange={this.handleChange} />
                 </div>
-                <div className="pt-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 px-1">
+                <div className="pt-3 col-xl-5 col-lg-5 col-md-5 col-sm-12 px-1" style={{flex:'0 0 46.666667%',maxWidth:'46%'}}>
                     <select refs="selectPicker" placeholder="State" data-show-subtext="true" data-live-search="true" className="selectpicker form-control" name="state" onChange={this.handleChange}>
                         <option>State</option>
                         <option>Alabama - AL</option>
@@ -202,8 +197,13 @@ class RegisterForm extends React.Component {
                         <option>Wyoming - WY</option>
                     </select>
                 </div>
-                <div className="pt-3 col-xl-4 col-lg-4 col-md-4 col-sm-12 px-1">
+                <div className="pt-3 col-xl-3 col-lg-3 col-md-3 col-sm-12 px-1" style={{flex:'0 0 20.666667%',maxWidth:'21%'}}>
                     <input type="text" placeholder="Zip Code" name="zip_code" value={this.state.fields.zip_code} onChange={this.handleChange} />
+                </div>
+            </div>
+            <div className="row mx-1 pt-3">
+                <div className="col-12 px-1">
+                    <input type="text" placeholder="Login Name*" name="user_name" value={this.state.fields.user_name} onChange={this.handleChange} className={ (this.state.errors["user_name"] ? this.state.errors["user_name"] : '')} />
                 </div>
             </div>
             <div className="row mx-1 pt-3">

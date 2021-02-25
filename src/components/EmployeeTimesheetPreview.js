@@ -5,7 +5,7 @@ import Stepper from 'bs-stepper';
 import {Modal,Container,Toast} from "react-bootstrap";
 
 
-class TimesheetPreview extends Component {
+class EmployeeTimesheetPreview extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -236,4 +236,4 @@ class TimesheetPreview extends Component {
   }
 }
 
-export default TimesheetPreview;
+export default EmployeeTimesheetPreview;

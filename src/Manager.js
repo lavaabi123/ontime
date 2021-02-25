@@ -9,7 +9,7 @@ import { NavLink} from "react-router-dom";
 
 class Manager extends React.Component {
   onSubmit = (e) => {      
-      this.props.history.push("/manager_timesheets");
+      this.props.history.push("/employee_timesheets");
   }
 	render() {
   return (
@@ -21,7 +21,7 @@ class Manager extends React.Component {
               <img src={Logo} width="86%" alt="Logo"/>
               <img alt="Banner" width="15%" src={require("./components/assets/img/time-icon.png").default} />
               <p className="font-weight-bold font-11 mb-2">OnTime, The Timesheet Solution</p>
-              <p className="font-11 mb-2">Manager Login</p>
+              <p className="font-11 mb-2">Employee Login</p>
               <form onSubmit= { this.onSubmit }>
               <div className="input-group mb-3">
                   <div className="input-group-prepend" style = {{width:'12%'}}>

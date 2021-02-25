@@ -17,14 +17,14 @@ render() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white mr-1" />
                 <Navbar.Collapse id="basic-navbar-nav" className="ml-0">
                     <Nav className="float-left">
-                        <Nav.Link as={NavLink} to="/manager_timesheets">My Own Timesheet</Nav.Link>
+                        <Nav.Link as={NavLink} to="/employee_timesheets">My Own Timesheet</Nav.Link>
                         <Nav.Link as={NavLink} to="/MyEmployees">My Employees</Nav.Link> 
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
             <MDBBtnGroup className="header-dropdown">
               <MDBBtn>
-                <Nav.Link as={NavLink} to="/MyProfile" className="p-0">
+                <Nav.Link as={NavLink} to="/EmployeeProfile" className="p-0">
                   <img alt="Banner" class="header-profile-img" 
                   src={require("./assets/img/user-default.png").default} />
                 </Nav.Link>
@@ -32,7 +32,7 @@ render() {
               <MDBDropdown>
                 <MDBDropdownToggle caret  className="drop-menu-header" />
                 <MDBDropdownMenu color="danger" className="header-drop-left">
-                    <Link as={Link} to="/MyProfile">
+                    <Link as={Link} to="/EmployeeProfile">
                       <MDBDropdownItem>
                       <i className="fa fa-user-circle pr-2"></i>Profile
                       </MDBDropdownItem>
