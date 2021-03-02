@@ -95,9 +95,9 @@ render() {
               </Col>
               <Col lg="4" md="4" sm="12">
                 <div className="form-group row mb-0">
-                  <label className="col-xl-4 col-lg-4 col-md-4 col-sm-10 act-text">Week Started</label>
+                  <label className="col-xl-4 col-lg-4 col-md-4 col-sm-10 act-text px-0">Week Started</label>
                   <DatePicker  selected={this.state.weeklyDate} onChange={date => this.setState({weeklyDate: date})}  
-                    name="startDate" className="form-control col-xl-9 col-lg-9 col-md-9 col-sm-10" 
+                    name="startDate" className="form-control ml-3 col-xl-9 col-lg-9 col-md-9 col-sm-10" 
                     filterDate={this.isWeekday} dateFormat="MM/dd/yyyy"/>
                 </div>
               </Col>
@@ -162,10 +162,6 @@ render() {
                     <tr>
                       <th colSpan='2' className="font-weight-bold text-right pr-1">NAME:</th>
                       <th colSpan='15' className="pl-1">ALLEN, JOE</th>
-                    </tr>
-                    <tr>
-                      <th colSpan='2' className="font-weight-bold text-right pr-1">BRANCH:</th>
-                      <th colSpan='15' className="pl-1">MIAMI, FL (345)</th>
                     </tr>
                     <tr>
                       <th colSpan='2' className="font-weight-bold text-right pr-1">GROUP:</th>

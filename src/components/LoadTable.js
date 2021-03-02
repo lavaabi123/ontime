@@ -230,34 +230,40 @@ class LoadTable extends React.Component {
       <MDBTable bordered className="activityloadtable"> 
           <MDBTableHead>
           <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th colspan='4' className='text-center'>Allowance For Extra Hours</th>
-            <th></th>
-            <th colspan='2'></th>
+            <th rowspan='2' class="sorting">Name</th>
+            <th rowspan='2'>Description</th>
+            <th rowspan='2'>Status</th>
+            <th rowspan='2'>ID</th>
+            <th rowspan='2'>Type</th>
+            <th rowspan='2'>Approver</th>
+            <th colspan='4' className='text-center'>Allowance For Extra Hours</th>            
+            <th rowspan='2'>Clock Round</th>
+            <th rowspan='2' colspan='2'>Action</th>
             </tr>
             <tr>
-            <th class="sorting">Name</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>ID</th>
-            <th>Type</th>
-            <th>Approver</th>
             <th>Extra Hours</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>Max Hours</th>
-            <th>Clock Round</th>
-            <th colspan='2'>Action</th>
             </tr>
           </MDBTableHead>
           <MDBTableBody>            
             <tr>
               <td>Henry</td>
+              <td>The Activity is for On Time</td>
+              <td>Active</td>
+              <td>1</td>
+              <td>Duty</td>
+              <td>Joe Smith</td>
+              <td>Allowed</td>
+              <td>02/14/2021</td>
+              <td>02/15/2021</td>
+              <td>2hrs</td>
+              <td>N/A</td>
+              <td><i class="fa fa-edit"  onClick={() => this.setState({ editshow: true })} ></i></td>
+              <td><i class="fa fa-trash"></i></td>                     
+            </tr><tr>
+              <td>Joe Smith</td>
               <td>The Activity is for On Time</td>
               <td>Active</td>
               <td>1</td>

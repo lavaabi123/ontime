@@ -164,10 +164,6 @@ render() {
                       <th colSpan='15' className="pl-1">ALLEN, JOE</th>
                     </tr>
                     <tr>
-                      <th colSpan='2' className="font-weight-bold text-right pr-1">BRANCH:</th>
-                      <th colSpan='15' className="pl-1">MIAMI, FL (345)</th>
-                    </tr>
-                    <tr>
                       <th colSpan='2' className="font-weight-bold text-right pr-1">GROUP:</th>
                       <th colSpan='15' className="pl-1">GROUP NAME OR ID</th>
                     </tr>

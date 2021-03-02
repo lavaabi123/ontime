@@ -341,6 +341,16 @@ select.form-control {
 .background-green1 {
   background-color: #7DC24B !important;
 }
+.cancel-btn1{
+  padding: 0.3rem 2.4rem;
+    margin-top: 2%;
+    margin-left: 2%;
+}
+.activityloadtable thead th{
+  padding:0.5%;
+  vertical-align: middle;
+  text-align: center;
+}
 .background-orange {
   background-color: #efbe52 !important;
 }
@@ -498,7 +508,7 @@ table td {
 }
 .activityloadtable th{
   border-top: 1px solid #dee2e6 !important;
-  border-bottom: 2px solid #dee2e6 !important;
+  border-bottom: 1px solid #dee2e6 !important;
 }
 .timesheets thead {
   background-color: #024769;
@@ -782,6 +792,10 @@ body.modal-open .navbar{
   }
   .footer .col-xs-4{
     width :50%;
+  }
+  .col-sm-6{
+    max-width:50%;
+    margin-top:2% !important;
   }
   .footer .col-sm-12 img{
     width :53%;

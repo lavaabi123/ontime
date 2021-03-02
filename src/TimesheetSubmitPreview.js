@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import AdminHeader from './components/AdminHeader.js';
+import ManagerHeader from './components/ManagerHeader.js';
 import Footer from './components/Footer.js';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,7 +10,7 @@ import { MDBBtn } from 'mdbreact';
 import { NavLink} from "react-router-dom";
 import Timer from 'react-compound-timer'
 
-class MyOwnTimesheet extends React.Component {  
+class TimesheetSubmitPreview extends React.Component {  
   constructor(props) {
     super(props);
     this.state = {
@@ -74,50 +74,13 @@ class MyOwnTimesheet extends React.Component {
   }
 render() {
    
-  const popover = (
-    <Popover id={`popover-positioned-top`} className="timesheetpopover">
-      <Popover.Title as="h6" className="background-green1 text-white">
-        <span className="small_font">Allen, Joe</span>
-        <span className="small_font">Sun Apr 15, 2016</span>
-        <span aria-label="Close" className="float-right icon-button cursor-pointer" 
-        onClick={() => document.body.click()}>x</span>
-      </Popover.Title>
-      <Popover.Content>
-      <div className="row px-3">
-      <label className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0 permission-label">Type : </label>
-      <label className="col-xl-6 col-lg-6 col-md-6 col-sm-10 p-0 permission-label">Punch Out</label>
-      </div>
-      <div className="row px-3">
-      <label className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0 permission-label">Time : </label>
-      <div className="col-xl-7 col-lg-7 col-md-7 col-sm-10 p-0">
-      <DatePicker
-        selected={this.state.startTime}
-        onChange={this.handleChange}
-        showTimeSelect
-        showTimeSelectOnly
-        timeIntervals={15}
-        timeCaption="Time" className="form-control"
-        dateFormat="h:mm aa"
-      /> 
-      </div>  
-      <i className="col-xl-1 col-lg-1 col-md-1 mt-auto mb-auto fa fa-clock-o text-danger"></i>                          
-      </div>
-      <div className="row px-3">
-      <label className="col-xl-3 col-lg-3 col-md-3 col-sm-10 p-0 permission-label"></label>
-      <label className="xs_font col-xl-8 col-lg-8 col-md-8 col-sm-10 p-0 permission-label">Actual Time : 04/25/2020 5:15PM</label>
-      </div>
-      <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 p-0">
-        <textarea className="form-control" placeholder="Note for reason for change(required)"></textarea>
-      </div>
-      <p className="xs_font mt-2 text-center">If there is support document, please<span className="link-style text-decoration-underline">upload</span></p>
-      <div class="row mt-2">
-        <div className="col-6"><button className="button resend-btn background-red px-2 float-left">Delete Punch</button></div>
-        <div className="col-6"><button className="button resend-btn float-right px-4">Save</button></div>
-      </div>
-      </Popover.Content>
-    </Popover>
-  );
   return (
+    <div className="App">
+    <Container>
+      <header className="admin-header">
+          <ManagerHeader />
+      </header>
+      <div className="contentwrapper pt-3 pb-5 mb-5">
     <div className="App">
         <div className="content">
         <div className="contentwrapper pb-5 mb-5">
@@ -132,56 +95,19 @@ render() {
               </Col>
               <Col lg="4" md="4" sm="12">
                 <div className="form-group row mb-0">
-                  <label className="col-xl-4 col-lg-4 col-md-4 col-sm-10 act-text px-0">Week Started: </label>
-                  <DatePicker  selected={this.state.weeklyDate} onChange={date => this.setState({weeklyDate: date})}  
-                    name="startDate" className="form-control ml-3 col-xl-8 col-lg-8 col-md-8 col-sm-10" 
-                    filterDate={this.isWeekday} value={this.state.weeklyDate} dateFormat="MM/dd/yyyy"/>
+                 <MDBBtn size="md" className="button cancel-btn cancel-btn1 float-right">
+                   Cancel
+                  </MDBBtn>
+                  <Nav.Link as={NavLink} to="/TimesheetSubmitted" className="p-0">
+                  <MDBBtn size="md" className="button resend-btn float-right ml-0 mr-1">
+                    Submit Timesheet
+                  </MDBBtn>
+                  </Nav.Link>
                 </div>
               </Col>
             </Row>
           </Card>
-          <Row>
-            <Col lg="8" md="8" sm="12">
-              <table border='1' className="col-12 text-center text-black">
-                    <thead>
-                        <tr>
-                            <th colSpan='3' className="blue-head">Joe Allen's Accumulated Time</th>
-                        </tr>
-                        <tr>
-                            <th rowSpan='2'>Week (April-24, 2020 - April-30, 2020)</th>
-                            <th rowSpan='2'>Current Bi-Week Period (April-17, 2020 - April-30, 2020)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="blue-num">
-                            <td className="font-weight-bold">36.5 Hrs</td>
-                            <td className="font-weight-bold">76.5 Hrs</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </Col>
-            <Col lg="4" md="4" sm="12" className="row my-auto">
-              <select placeholder="Select" className="col-lg-7 col-md-7 col-sm-6 form-control float-left" name="state">
-                  <option>OHTA(98)</option>
-                  <option>PLC(23)</option>
-              </select>
-            <Timer  className="col-12" initialTime={0} startImmediately={false}>
-            {({ start, resume, pause, stop, reset, timerState }) => (
-                <React.Fragment>
-                  <MDBBtn size="md" className="col-lg-4 col-md-4 col-sm-6 ml-2 btn-success float-right" onClick={() => {start();this.setState({ clockin: false });this.getTime()}} style={this.state.clockin === true ? {} : { display: 'none' }}>
-                    Clock In
-                  </MDBBtn>
-                  <MDBBtn size="md" className="col-lg-4 col-md-4 col-sm-6 ml-2 btn-danger float-right" onClick={() => this.setState({ clockin: true })} style={this.state.clockin === false ? {} : { display: 'none' }}>
-                    Clock Out
-                  </MDBBtn>
-                    <div className="small_font text-success col-12 pl-0 mt-2" style={this.state.clockin === false ? {} : { display: 'none' }}>
-                        <Timer.Hours /> : <Timer.Minutes /> : <Timer.Seconds /> <span className="text-right float-right">Start Time : {this.state.curtime}</span>
-                    </div>
-                </React.Fragment>
-            )}
-          </Timer>
-            </Col>
-          </Row>
+          
           <div className="mt-3">
             <table border='1' className="col-12 text-black">
                 <thead>
@@ -191,16 +117,6 @@ render() {
                             <Col lg="6" md="6" sm="12">
                               <div className="pl-2  float-left">
                                 <span className="font-12">WEEKLY TIME SHEET</span>
-                                <span className="small-font pl-2">April-24, 2020 - April-30, 2020</span>
-                              </div>
-                            </Col>
-                            <Col lg="6" md="6" sm="12">
-                              <div className="pr-2 float-right">
-                                <span className="pr-2 font-12">Active</span>
-                                <span className="font-small">Due on : April 29, 2020</span>
-                                <span className="px-1">|</span>
-                                <i className="fa fa-print px-1"></i>
-                                <i className="fa fa-file-pdf-o px-1"></i>
                               </div>
                             </Col>
                           </Row>
@@ -232,23 +148,17 @@ render() {
                       <td colSpan='1'>IN</td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:58 AM</span>
-                      </OverlayTrigger>
+                      <span variant="secondary">7:58 AM</span>
                       </td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                      <span variant="secondary">8:00 AM</span></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
                         <span variant="secondary">7:58 AM</span>
-                      </OverlayTrigger></td>
+                      </td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:45 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">7:45 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                   </tr>
@@ -256,22 +166,18 @@ render() {
                       <td colSpan='1'>OUT</td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:58 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">7:58 AM</span>
+                      </td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                      <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:58 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">7:58 AM</span>
+                      </td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:45 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">7:45 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                   </tr>
@@ -279,22 +185,18 @@ render() {
                       <td colSpan='1'>IN</td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:58 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">7:58 AM</span>
+                      </td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:58 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">7:58 AM</span>
+                      </td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:45 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">7:45 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                   </tr>
@@ -302,22 +204,18 @@ render() {
                       <td colSpan='1'>OUT</td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:58 AM</span>
-                      </OverlayTrigger></td>
+                      <span variant="secondary">7:58 AM</span>
+                      </td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:58 AM</span>
-                      </OverlayTrigger></td>
+                      <span variant="secondary">7:58 AM</span>
+                      </td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">7:45 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">7:45 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                   </tr>
@@ -325,27 +223,22 @@ render() {
                       <td colSpan='2'>OTHA HOURS</td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                      <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                      <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">4:25 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">4:25 AM</span>
+                      </td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">28:25 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">28:25 AM</span>
+                      </td>
                   </tr>
                   <tr>
                       <td colSpan='1' rowSpan='4'>CLA</td>
@@ -354,9 +247,8 @@ render() {
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
@@ -368,9 +260,8 @@ render() {
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
@@ -382,9 +273,8 @@ render() {
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
@@ -396,9 +286,8 @@ render() {
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'>
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                      <span variant="secondary">8:00 AM</span>
+                      </td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
                       <td colSpan='2'></td>
@@ -410,16 +299,14 @@ render() {
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">8:00 AM</span>
+                     </td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">8:00 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">8:00 AM</span>
+                      </td>
                   </tr>
                   <tr className="time-td blue-text">
                       <td colSpan='2'>HOLIDAY</td>
@@ -447,9 +334,8 @@ render() {
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">0:25 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">0:25 AM</span>
+                      </td>
                   </tr>
                   <tr className="time-td blue-text bg-lite-gray">
                       <td colSpan='2'>TOTAL</td>
@@ -461,9 +347,8 @@ render() {
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue"></td>
                       <td colSpan='2' className="text-blue">
-                      <OverlayTrigger trigger="click" key='top' placement='top' rootClose={true} overlay={popover}>
-                        <span variant="secondary">36:25 AM</span>
-                      </OverlayTrigger></td>
+                       <span variant="secondary">36:25 AM</span>
+                      </td>
                   </tr>
                 </tbody>
                 <thead>
@@ -479,7 +364,9 @@ render() {
                         1
                       </MDBBtn>
                         Paid time off (PTO) Monday(Apr 24, 2020): PTO Added - Changes ,ade by John Manager
-                        on 01:58 PM Apr 26, 2020 ___ | ___.
+                        on 01:58 PM Apr 26, 2020 <img alt="Sign"  width="3%"
+                        src={require("./components/assets/img/empsign1.png").default} /> | <img alt="Sign"  width="3%"
+                        src={require("./components/assets/img/empsign1.png").default} />.
                       </span>
                     </th>
                   </tr>
@@ -487,27 +374,22 @@ render() {
                     <th colSpan='17' className="py-2"></th>
                   </tr>
                   <tr>
-                    <th colSpan='6' className="pt-5">
+                    <th colSpan='6' className="">
                       <Row>
-                        <Col lg="6" md="6" sm="6" className="mt-3">
-                          <span className="pl-1 font-9">Employee Signature:</span>
+                        <Col lg="4" md="4" sm="6" className="mt-3 pt-5">
+                          <span className="pl-1 font-9">Employee Signature: </span>
                         </Col>
-                        <Col lg="6" md="6" sm="6">
-                          <div className="float-right">
-                            <div className="guideList"  onClick={date => this.setState({signshow: true})}>
-                                <div className="active"><span className="activePointer"></span>
-                                <span className="pl-4">SIGN</span></div>
-                            </div>
-                          </div>
+                        <Col lg="8" md="8" sm="6" className="mt-3 pt-4">
+                        <img alt="Sign"  width="30%"
+                        src={require("./components/assets/img/empsign1.png").default} />
+                        <span className="text-muted small_font">17:00:00 2016-04-29</span>
                         </Col>
                       </Row>
                     </th>
                     <th colSpan='3' className="pt-5">
                       <Row>
-                        <Col lg="6" md="6" sm="6" className="mt-3">
-                          <span className="pl-1 font-9">Date:</span>
-                        </Col>
-                        <Col lg="6" md="6" sm="6">
+                        <Col lg="12" md="12" sm="12" className="mt-3">
+                          <span className="pl-1 font-9">Date:  4/29/2016</span>
                         </Col>
                       </Row>
                     </th>
@@ -570,17 +452,17 @@ render() {
       <div class="col-12 row mt-2">
        
         <div className="col-6"><button onClick={() => this.setState({ signshow: false })} className="button resend-btn background-red px-2 float-left">No Cancel</button></div>
-        <div className="col-6">
-          <Nav.Link as={NavLink} to="/TimesheetSubmitPreview" className="p-0">
-            <button className="button resend-btn float-right px-4">Yes, Sign & Submit</button>
-          </Nav.Link>
-          </div>
+        <div className="col-6"><button className="button resend-btn float-right px-4">Yes, Sign & Submit</button></div>
       </div>
       </Modal.Footer>
     </Modal>  
+    </div>
+    </div>
+      </Container>
+      
     </div>
   );
   }
 }
 
-export default MyOwnTimesheet;
+export default TimesheetSubmitPreview;

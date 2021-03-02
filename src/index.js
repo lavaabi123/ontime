@@ -21,6 +21,8 @@ import reportWebVitals from './reportWebVitals';
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 import EmployeeTimesheetDetail from './EmployeeTimesheetDetail.js';
 import EmployeeProfile from './EmployeeProfile';
+import TimesheetSubmitPreview from './TimesheetSubmitPreview';
+import TimesheetSubmitted from './TimesheetSubmitted';
 
 ReactDOM.render(
   <HashRouter>
@@ -92,6 +94,14 @@ ReactDOM.render(
         <Route  
           path="/EmployeeTimesheetDetail"
           render={(props) => <EmployeeTimesheetDetail {...props} />}
+        />
+        <Route  
+          path="/TimesheetSubmitPreview"
+          render={(props) => <TimesheetSubmitPreview {...props} />}
+        />
+        <Route  
+          path="/TimesheetSubmitted"
+          render={(props) => <TimesheetSubmitted {...props} />}
         />
         <Route
           path="/employee"
